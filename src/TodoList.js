@@ -31,8 +31,8 @@ class ListItem extends React.Component {
     render() {
         return (
             <li>
-                {this.props.value}
                 <button className="remove-todo-item" onClick={this.props.handleClose}>X</button>
+                {this.props.value}
             </li>
         );
     }

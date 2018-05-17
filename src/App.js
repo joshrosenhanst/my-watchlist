@@ -26,7 +26,10 @@ class App extends Component {
   }
 
   removeTodoItem(id) {
-
+    const TodoList = this.state.TodoList;
+    this.setState({
+      TodoList: TodoList.filter((item) => item.id !== id)
+    });
   }
 
   render() {
@@ -42,6 +45,7 @@ class App extends Component {
         <main className="App-main">
           <TodoList 
             todoList={todoList}
+            removeTodoItem={(id) => this.removeTodoItem(id)}
           />
         </main>
       </div>

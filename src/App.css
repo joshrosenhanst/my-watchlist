@@ -17,6 +17,11 @@ body{
   color: white;
 }
 
+.App-header .Todo-entry{
+  max-width:400px;
+  margin:20px auto 0 auto;
+}
+
 .App-main {
   padding:20px;
 }
@@ -60,7 +65,7 @@ body{
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2.5em;
 }
 
 .App-intro {

@@ -1,3 +1,7 @@
+body{
+  line-height:1.2;
+}
+
 .App {
   text-align: center;
 }
@@ -17,7 +21,7 @@
   padding:20px;
 }
 
-.App-main .TodoList{
+.App-main .list-element{
   list-style:none;
   margin:0;
   padding:0;
@@ -26,16 +30,33 @@
   text-align:left;
 }
 
-.App-main .TodoList li{
+.App-main .list-element li{
   border:1px solid #ccc;
   border-radius:2px;
   margin:5px 0;
-  padding:10px;
+  padding:10px 30px 10px 10px;
 }
 
-.App-main .TodoList li .remove-todo-item{
-  float:right;
+.App-main .CompletedList li {
+  font-style:italic;
+  color:#9a9a9a;
+}
 
+.App-main .list-element li .remove-todo-item{
+  top:0;
+  bottom:0;
+  margin:auto 0;
+}
+
+.App-main .list-element li .check-todo-item{
+  position:absolute;
+  top:0;
+  bottom:0;
+  margin:auto 0;
+}
+
+.App-main .list-element li .todo-item-text{
+  margin-left:22px;
 }
 
 .App-title {

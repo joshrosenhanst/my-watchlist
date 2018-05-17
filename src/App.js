@@ -17,19 +17,27 @@ class App extends Component {
   }
 
   addTodoItem(text) {
-    const TodoList = this.state.TodoList;
     this.setState({
-      TodoList: TodoList.concat([{
-        id:TodoList.length + 1, 
+      TodoList: this.state.TodoList.concat([{
+        id:this.state.TodoList.length + 1, 
         text:text
       }])
     })
   }
 
   removeTodoItem(id) {
-    const TodoList = this.state.TodoList;
     this.setState({
-      TodoList: TodoList.filter((item) => item.id !== id)
+      TodoList: this.state.TodoList.filter((item) => item.id !== id)
+    });
+  }
+
+  checkTodoItem(id,value) {
+    const completed = value ? 1:0;
+    //clone the array and then map the cloned array to set completed on the matching ID
+    const TodoList = this.state.TodoList.slice(0);
+    let updatedList = TodoList.map((item) => item.id !== id ? item : {...item, completed:completed});
+    this.setState({
+      TodoList: updatedList
     });
   }
 

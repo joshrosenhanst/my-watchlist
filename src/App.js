@@ -7,28 +7,50 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      TodoList: [
+      TodoList: this.getTodoListStorage(),
+      nextID: this.getNextIDStorage(),
+      /*TodoList: [
         {id:1, text: "hey", completed:0},
         {id:2, text: "this", completed:0},
         {id:3, text: "works", completed:1},
         {id:4, text: "look how long this text is it just keeps on going forever wow 2 whole lines dude", completed:0},
-      ],
+      ],*/
     };
   }
 
+  getTodoListStorage() {
+    let storage = localStorage.getItem("todo-app-todolist");
+    return JSON.parse(storage) || [];
+  }
+
+  getNextIDStorage() {
+    return parseInt(localStorage.getItem("todo-app-nextid")) || 0;
+  }
+
+  updateStorage(data,nextID){
+    localStorage.setItem("todo-app-todolist", JSON.stringify(data));
+    localStorage.setItem("todo-app-nextid", nextID);
+  }
+
   addTodoItem(text) {
+    let updatedID = parseInt(this.state.nextID) + 1;
+    let updatedList = this.state.TodoList.concat([{
+      id:updatedID, 
+      text:text
+    }]);
     this.setState({
-      TodoList: this.state.TodoList.concat([{
-        id:this.state.TodoList.length + 1, 
-        text:text
-      }])
-    })
+      TodoList: updatedList,
+      nextID: updatedID
+    });
+    this.updateStorage(updatedList, updatedID);
   }
 
   removeTodoItem(id) {
+    let updatedList = this.state.TodoList.filter((item) => item.id !== id);
     this.setState({
-      TodoList: this.state.TodoList.filter((item) => item.id !== id)
+      TodoList: updatedList
     });
+    this.updateStorage(updatedList, this.state.nextID);
   }
 
   checkTodoItem(id,value) {
@@ -39,6 +61,7 @@ class App extends Component {
     this.setState({
       TodoList: updatedList
     });
+    this.updateStorage(updatedList, this.state.nextID);
   }
 
   render() {

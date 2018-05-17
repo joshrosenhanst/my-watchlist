@@ -6,7 +6,7 @@ class TodoEntry extends React.Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
     handleKeyPress(event){
-        if(event.key == 'Enter'){
+        if(event.key == 'Enter' && event.target.value){
             this.props.addTodoItem(event.target.value);
             event.target.value = "";
         }

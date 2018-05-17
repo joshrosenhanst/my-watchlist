@@ -51,7 +51,8 @@ class TodoList extends React.Component {
         );*/
         return (
             <div className="list-containers">
-                <ul className="TodoList list-element">{listItems}</ul>
+                { listItems.length == 0 ? (<h1 className="no-items">Add Todo List Items</h1>) : '' }
+                    <ul className="TodoList list-element">{listItems}</ul>
                 <hr />
                 <ul className="CompletedList list-element">{completedItems}</ul>
             </div>

@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
+import './TodoEntry.css';
 
 const movies = [
     {
         title: 'Jurassic Park',
         description: 'Lorem Ipsum dinosaurs',
-        text: '?text=Jurassic+Park',
+        image: 'http://via.placeholder.com/40x54?text=Jurassic+Park',
         year: '1993',
         type: 'movie'
     },
     {
         title: 'The Wire',
         description: 'Lorem Ipsum baltimore',
-        text: '?text=The+Wire',
+        image: 'http://via.placeholder.com/40x54?text=The+Wire',
         year: '2000',
         type: 'TV Show'
     },
     {
         title: 'The Jalopy',
         description: 'Lorem Ipsum jalopy',
-        text: '?text=The+Jalopy',
+        image: 'http://via.placeholder.com/40x54?text=The+Jalopy',
         year: '1969',
         type: 'Movie'
     },
@@ -39,9 +40,9 @@ const getSuggestionValue = suggestion => suggestion.title;
 const renderSuggestion = suggestion => (
     <div>
     <article className="media">
-        <figure className="media-left">
+        <figure className="media-left Suggestion-image">
             <p className="image">
-                <img src="http://via.placeholder.com/120x150" alt={suggestion.title} />
+                <img src={suggestion.image} alt={suggestion.title} />
             </p>
         </figure>
         <div className="media-content">
@@ -80,6 +81,20 @@ class TodoEntry extends React.Component {
             suggestions: []
         });
     };
+
+    onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+        this.setState({
+            suggestions: []
+        });
+        this.props.addTodoItem( suggestion.title );
+    }
+    /*onSuggestionSelected = value => {
+        console.log(value);
+        this.setState({
+            suggestions: []
+        });
+        //this.props.addTodoItem( value );
+    }*/
     /*handleKeyPress(event){
         if(event.key == 'Enter' && event.target.value){
             this.props.addTodoItem(event.target.value);
@@ -102,6 +117,7 @@ class TodoEntry extends React.Component {
                         suggestions={suggestions}
                         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                        onSuggestionSelected={this.onSuggestionSelected}
                         getSuggestionValue={getSuggestionValue}
                         renderSuggestion={renderSuggestion}
                         inputProps={inputProps}

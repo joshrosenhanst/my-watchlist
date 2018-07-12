@@ -1,0 +1,57 @@
+.TodoList-element{
+  list-style:none;
+  margin:0;
+  padding:0;
+  max-width:600px;
+  margin:0 auto;
+  text-align:left;
+}
+
+.TodoList-element li{
+  border:1px solid #ccc;
+  border-radius:2px;
+  margin:5px 0;
+  padding:10px 30px 10px 10px;
+}
+
+.TodoList-element .buttons{
+    margin-top:10px;
+}
+
+.CompletedList li{
+  font-style:italic;
+  color:#9a9a9a;
+}
+
+.ListItem-level{
+    margin-top:10px;
+}
+
+.ListItem-title{
+    font-size:1.6em;
+}
+
+.ListItem-year{
+    font-size:0.8em;
+    margin-left:5px;
+    color:#777;
+}
+
+/*
+.App-main .list-element li .remove-todo-item{
+  top:0;
+  bottom:0;
+  margin:auto 0;
+}
+
+.App-main .list-element li .check-todo-item{
+  position:absolute;
+  top:0;
+  bottom:0;
+  margin:auto 0;
+}
+
+.App-main .list-element li .todo-item-text{
+  margin-left:22px;
+}
+*/

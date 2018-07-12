@@ -72,7 +72,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Todo App</h1>
+          <h1 className="App-title">Watch List</h1>
           <TodoEntry 
             addTodoItem={(text) => this.addTodoItem(text)} 
           />

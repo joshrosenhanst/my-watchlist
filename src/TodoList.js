@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
+import './TodoList.css';
 
 class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.handleClose = this.handleClose.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
+        this.handleComplete = this.handleComplete.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
 
     handleCheck(e,id){
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         this.props.checkTodoItem(id,value);
+    }
+
+    handleComplete(e,id){
+        this.props.checkTodoItem(id,1);
+    }
+
+    handleReset(e,id){
+        this.props.checkTodoItem(id,0);
     }
 
     handleClose(e,id) {
@@ -22,20 +33,32 @@ class TodoList extends React.Component {
         const completedItems = [];
 
         todoList.forEach((item) => {
-            let renderedItem = (
-                <ListItem 
-                    key={item.id} 
-                    value={item.text} 
-                    id={item.id} 
-                    handleClose={(e) => this.handleClose(e,item.id)} 
-                    handleCheck={(e) => this.handleCheck(e,item.id)} 
-                    checked={item.completed}
-                />
-            );
             if(item.completed){
-                completedItems.push(renderedItem);
+                completedItems.push(
+                    <CompletedListItem 
+                        key={item.id} 
+                        value={item.text} 
+                        id={item.id} 
+                        handleClose={(e) => this.handleClose(e,item.id)} 
+                        handleCheck={(e) => this.handleCheck(e,item.id)} 
+                        handleComplete={(e) => this.handleComplete(e,item.id)}
+                        handleReset={(e) => this.handleReset(e,item.id)}
+                        checked={item.completed}
+                    />
+                );
             }else{
-                listItems.push(renderedItem);
+                listItems.push(
+                    <ListItem 
+                        key={item.id} 
+                        value={item.text} 
+                        id={item.id} 
+                        handleClose={(e) => this.handleClose(e,item.id)} 
+                        handleCheck={(e) => this.handleCheck(e,item.id)} 
+                        handleComplete={(e) => this.handleComplete(e,item.id)}
+                        handleReset={(e) => this.handleReset(e,item.id)}
+                        checked={item.completed}
+                    />
+                );
             }
         });
 
@@ -51,10 +74,10 @@ class TodoList extends React.Component {
         );*/
         return (
             <div className="list-containers">
-                { listItems.length == 0 ? (<h1 className="no-items">Add Todo List Items</h1>) : '' }
-                    <ul className="TodoList list-element">{listItems}</ul>
+                { listItems.length == 0 ? (<h1 className="no-items">Add Todo List Items</h1>) : null }
+                    <ul className="TodoList TodoList-element">{listItems}</ul>
                 <hr />
-                <ul className="CompletedList list-element">{completedItems}</ul>
+                <ul className="CompletedList TodoList-element">{completedItems}</ul>
             </div>
         );
     }
@@ -66,8 +89,47 @@ class ListItem extends React.Component {
         return (
             <li className="notification">
                 <button className="delete remove-todo-item" onClick={this.props.handleClose}></button>
-                <input type="checkbox" className="check-todo-item" checked={this.props.checked} onChange={this.props.handleCheck} />
-                <div className="todo-item-text">{this.props.value}</div>
+                <article className="media">
+                    <figure className="media-left">
+                        <p className="image">
+                            <img src="http://via.placeholder.com/120x150" alt="Placeholder"/>
+                        </p>
+                    </figure>
+                    <div className="media-content">
+                        <h3 className="ListItem-title">
+                            {this.props.value}
+                            <span className="ListItem-year">(1999)</span>
+                        </h3>
+                        <p className="ListItem-description">During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.</p>
+                        <p className="buttons">
+                            <button className="button TodoList-Complete is-success" onClick={this.props.handleComplete}>
+                                <span className="icon"><i className="fa fa-check"></i></span>
+                                <span>Watched</span>
+                            </button>
+                        </p>
+                    </div>
+                </article>
+            </li>
+        );
+    }
+}
+
+class CompletedListItem extends React.Component {
+    render(){
+        return (
+            <li className="notification">
+                <button className="delete remove-todo-item" onClick={this.props.handleClose}></button>
+                <article className="CompletedListItem-content">
+                    <h3 className="ListItem-title">
+                        {this.props.value}
+                    </h3>
+                    <p className="buttons">
+                        <button className="button TodoList-Reset" onClick={this.props.handleReset}>
+                            <span className="icon"><i className="fa fa-undo"></i></span>
+                            <span>Return to Watch List</span>
+                        </button>
+                    </p>
+                </article>
             </li>
         );
     }

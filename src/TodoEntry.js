@@ -1,23 +1,110 @@
 import React, { Component } from 'react';
+import Autosuggest from 'react-autosuggest';
+
+const movies = [
+    {
+        title: 'Jurassic Park',
+        description: 'Lorem Ipsum dinosaurs',
+        text: '?text=Jurassic+Park',
+        year: '1993',
+        type: 'movie'
+    },
+    {
+        title: 'The Wire',
+        description: 'Lorem Ipsum baltimore',
+        text: '?text=The+Wire',
+        year: '2000',
+        type: 'TV Show'
+    },
+    {
+        title: 'The Jalopy',
+        description: 'Lorem Ipsum jalopy',
+        text: '?text=The+Jalopy',
+        year: '1969',
+        type: 'Movie'
+    },
+];
+
+const getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0 ? [] : movies.filter(mov =>
+        mov.title.toLowerCase().slice(0, inputLength) === inputValue
+    );
+};
+
+const getSuggestionValue = suggestion => suggestion.title;
+
+const renderSuggestion = suggestion => (
+    <div>
+    <article className="media">
+        <figure className="media-left">
+            <p className="image">
+                <img src="http://via.placeholder.com/120x150" alt={suggestion.title} />
+            </p>
+        </figure>
+        <div className="media-content">
+            <h3 className="Suggestion-title">
+                {suggestion.title}
+                <span className="Suggestion-year">({suggestion.year})</span>
+            </h3>
+        </div>
+    </article>
+    </div>
+  );
 
 class TodoEntry extends React.Component {
     constructor(props) {
         super(props);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
+        //this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.state = {
+            value: '',
+            suggestions: []
+        };
     }
-    handleKeyPress(event){
+    onChange = (event, { newValue }) => {
+        this.setState({
+            value: newValue
+        });
+    };
+
+    onSuggestionsFetchRequested = ({ value }) => {
+        this.setState({
+            suggestions: getSuggestions(value)
+        });
+    };
+
+    onSuggestionsClearRequested = () => {
+        this.setState({
+            suggestions: []
+        });
+    };
+    /*handleKeyPress(event){
         if(event.key == 'Enter' && event.target.value){
             this.props.addTodoItem(event.target.value);
             event.target.value = "";
         }
-    }
+    }*/
 
     render() {
+        const { value, suggestions } = this.state;
+        const inputProps = {
+            placeholder: 'Type a Movie or TV Show...',
+            value,
+            onChange: this.onChange,
+            className: 'input'
+        };
         return (
             <div className="Todo-entry">
                 <div className="control has-icons-left">
-                    <input type="text"  className="input" placeholder="Add a todo item" 
-                        onKeyPress={this.handleKeyPress}
+                    <Autosuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={inputProps}
                     />
                     <span className="icon is-left">
                         <i className="fas fa-plus"></i>

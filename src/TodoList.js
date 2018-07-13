@@ -37,8 +37,8 @@ class TodoList extends React.Component {
                 completedItems.push(
                     <CompletedListItem 
                         key={item.id} 
-                        value={item.text} 
-                        id={item.id} 
+                        id={item.id}
+                        watchItem={item.watchItem}
                         handleClose={(e) => this.handleClose(e,item.id)} 
                         handleCheck={(e) => this.handleCheck(e,item.id)} 
                         handleComplete={(e) => this.handleComplete(e,item.id)}
@@ -49,9 +49,9 @@ class TodoList extends React.Component {
             }else{
                 listItems.push(
                     <ListItem 
-                        key={item.id} 
-                        value={item.text} 
+                        key={item.id}
                         id={item.id} 
+                        watchItem={item.watchItem}
                         handleClose={(e) => this.handleClose(e,item.id)} 
                         handleCheck={(e) => this.handleCheck(e,item.id)} 
                         handleComplete={(e) => this.handleComplete(e,item.id)}
@@ -97,10 +97,10 @@ class ListItem extends React.Component {
                     </figure>
                     <div className="media-content">
                         <h3 className="ListItem-title">
-                            {this.props.value}
-                            <span className="ListItem-year">(1999)</span>
+                            {this.props.watchItem.title}
+                            <span className="ListItem-year">{this.props.watchItem.year}</span>
                         </h3>
-                        <p className="ListItem-description">During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.</p>
+                        <p className="ListItem-description">{this.props.watchItem.description}</p>
                         <p className="buttons">
                             <button className="button TodoList-Complete is-success" onClick={this.props.handleComplete}>
                                 <span className="icon"><i className="fa fa-check"></i></span>
@@ -121,7 +121,7 @@ class CompletedListItem extends React.Component {
                 <button className="delete remove-todo-item" onClick={this.props.handleClose}></button>
                 <article className="CompletedListItem-content">
                     <h3 className="ListItem-title">
-                        {this.props.value}
+                        {this.props.watchItem.title}
                     </h3>
                     <p className="buttons">
                         <button className="button TodoList-Reset" onClick={this.props.handleReset}>

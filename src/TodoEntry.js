@@ -84,9 +84,10 @@ class TodoEntry extends React.Component {
 
     onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
         this.setState({
-            suggestions: []
+            suggestions: [],
+            value: ''
         });
-        this.props.addTodoItem( suggestion.title );
+        this.props.addWatchItem( suggestion );
     }
     /*onSuggestionSelected = value => {
         console.log(value);

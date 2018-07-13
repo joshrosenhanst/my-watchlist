@@ -35,6 +35,19 @@ class App extends Component {
     localStorage.setItem("todo-app-nextid", nextID);
   }
 
+  addWatchItem(watchItem) {
+    let updatedID = parseInt(this.state.nextID) + 1;
+    let updatedList = this.state.TodoList.concat([{
+      id:updatedID, 
+      watchItem:watchItem
+    }]);
+    this.setState({
+      TodoList: updatedList,
+      nextID: updatedID
+    });
+    this.updateStorage(updatedList, updatedID);
+  }
+
   addTodoItem(text) {
     let updatedID = parseInt(this.state.nextID) + 1;
     let updatedList = this.state.TodoList.concat([{
@@ -75,6 +88,7 @@ class App extends Component {
           <h1 className="App-title">Watch List</h1>
           <TodoEntry 
             addTodoItem={(text) => this.addTodoItem(text)} 
+            addWatchItem={(watchItem) => this.addWatchItem(watchItem)} 
           />
         </header>
         <main className="App-main">

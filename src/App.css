@@ -17,7 +17,7 @@ body{
   color: white;
 }
 
-.App-header .Todo-entry{
+.App-header .WatchListInput{
   max-width:400px;
   margin:20px auto 0 auto;
 }

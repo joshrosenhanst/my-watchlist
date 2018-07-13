@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
-import './TodoEntry.css';
+import './WatchListInput.css';
 
 const movies = [
     {
         title: 'Jurassic Park',
         description: 'Lorem Ipsum dinosaurs',
-        image: 'http://via.placeholder.com/40x54?text=Jurassic+Park',
+        thumbnail: 'http://via.placeholder.com/40x54?text=Jurassic+Park',
+        image: 'http://via.placeholder.com/120x150?text=Jurassic+Park',
         year: '1993',
         type: 'movie'
     },
     {
         title: 'The Wire',
         description: 'Lorem Ipsum baltimore',
-        image: 'http://via.placeholder.com/40x54?text=The+Wire',
+        thumbnail: 'http://via.placeholder.com/40x54?text=The+Wire',
+        image: 'http://via.placeholder.com/120x150?text=The+Wire',
         year: '2000',
         type: 'TV Show'
     },
     {
         title: 'The Jalopy',
         description: 'Lorem Ipsum jalopy',
-        image: 'http://via.placeholder.com/40x54?text=The+Jalopy',
+        thumbnail: 'http://via.placeholder.com/40x54?text=The+Wire',
+        image: 'http://via.placeholder.com/120x150?text=The+Jalopy',
         year: '1969',
         type: 'Movie'
     },
@@ -42,7 +45,7 @@ const renderSuggestion = suggestion => (
     <article className="media">
         <figure className="media-left Suggestion-image">
             <p className="image">
-                <img src={suggestion.image} alt={suggestion.title} />
+                <img src={suggestion.thumbnail} alt={suggestion.title} />
             </p>
         </figure>
         <div className="media-content">
@@ -55,7 +58,7 @@ const renderSuggestion = suggestion => (
     </div>
   );
 
-class TodoEntry extends React.Component {
+class WatchListInput extends React.Component {
     constructor(props) {
         super(props);
         //this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -87,21 +90,8 @@ class TodoEntry extends React.Component {
             suggestions: [],
             value: ''
         });
-        this.props.addWatchItem( suggestion );
+        this.props.addWatchListItem( suggestion );
     }
-    /*onSuggestionSelected = value => {
-        console.log(value);
-        this.setState({
-            suggestions: []
-        });
-        //this.props.addTodoItem( value );
-    }*/
-    /*handleKeyPress(event){
-        if(event.key == 'Enter' && event.target.value){
-            this.props.addTodoItem(event.target.value);
-            event.target.value = "";
-        }
-    }*/
 
     render() {
         const { value, suggestions } = this.state;
@@ -112,7 +102,7 @@ class TodoEntry extends React.Component {
             className: 'input'
         };
         return (
-            <div className="Todo-entry">
+            <div className="WatchListInput">
                 <div className="control has-icons-left">
                     <Autosuggest
                         suggestions={suggestions}
@@ -132,4 +122,4 @@ class TodoEntry extends React.Component {
     }
 }
 
-export default TodoEntry;
+export default WatchListInput;

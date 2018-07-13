@@ -2,27 +2,21 @@ import React, { Component } from 'react';
 import update from 'immutability-helper';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import TodoEntry from './TodoEntry';
-import TodoList from './TodoList';
+import WatchListInput from './WatchListInput';
+import WatchList from './WatchList';
 import './App.css';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      TodoList: this.getTodoListStorage(),
+      WatchList: this.getWatchListStorage(),
       nextID: this.getNextIDStorage(),
-      /*TodoList: [
-        {id:1, text: "hey", completed:0},
-        {id:2, text: "this", completed:0},
-        {id:3, text: "works", completed:1},
-        {id:4, text: "look how long this text is it just keeps on going forever wow 2 whole lines dude", completed:0},
-      ],*/
     };
   }
 
-  getTodoListStorage() {
-    let storage = localStorage.getItem("todo-app-todolist");
+  getWatchListStorage() {
+    let storage = localStorage.getItem("todo-app-watchlist");
     return JSON.parse(storage) || [];
   }
 
@@ -30,72 +24,57 @@ class App extends Component {
     return parseInt(localStorage.getItem("todo-app-nextid")) || 0;
   }
 
-  updateStorage(data,nextID){
-    localStorage.setItem("todo-app-todolist", JSON.stringify(data));
+  updateStorage(watchList,nextID){
+    localStorage.setItem("todo-app-watchlist", JSON.stringify(watchList));
     localStorage.setItem("todo-app-nextid", nextID);
   }
 
-  addWatchItem(watchItem) {
+  addWatchListItem(watchListItem) {
     let updatedID = parseInt(this.state.nextID) + 1;
-    let updatedList = this.state.TodoList.concat([{
+    let updatedList = this.state.WatchList.concat([{
       id:updatedID, 
-      watchItem:watchItem
+      watchListItem:watchListItem
     }]);
     this.setState({
-      TodoList: updatedList,
+      WatchList: updatedList,
       nextID: updatedID
     });
     this.updateStorage(updatedList, updatedID);
   }
 
-  addTodoItem(text) {
-    let updatedID = parseInt(this.state.nextID) + 1;
-    let updatedList = this.state.TodoList.concat([{
-      id:updatedID, 
-      text:text
-    }]);
+  removeWatchListItem(id) {
+    let updatedList = this.state.WatchList.filter((item) => item.id !== id);
     this.setState({
-      TodoList: updatedList,
-      nextID: updatedID
-    });
-    this.updateStorage(updatedList, updatedID);
-  }
-
-  removeTodoItem(id) {
-    let updatedList = this.state.TodoList.filter((item) => item.id !== id);
-    this.setState({
-      TodoList: updatedList
+      WatchList: updatedList
     });
     this.updateStorage(updatedList, this.state.nextID);
   }
 
-  checkTodoItem(id,value) {
-    const completed = value ? 1:0;
+  updateWatchListItemStatus(id,status){
     //clone the array and then map the cloned array to set completed on the matching ID
-    const TodoList = this.state.TodoList.slice(0);
-    let updatedList = TodoList.map((item) => item.id !== id ? item : {...item, completed:completed});
+    const WatchList = this.state.WatchList.slice(0);
+    let updatedList = WatchList.map((item) => item.id !== id ? item : {...item, completed:status});
     this.setState({
-      TodoList: updatedList
+      WatchList: updatedList
     });
     this.updateStorage(updatedList, this.state.nextID);
   }
 
   render() {
-    const todoList = this.state.TodoList;
+    const watchList = this.state.WatchList;
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Watch List</h1>
-          <TodoEntry 
-            addTodoItem={(text) => this.addTodoItem(text)} 
-            addWatchItem={(watchItem) => this.addWatchItem(watchItem)} 
+          <WatchListInput 
+            addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />
         </header>
         <main className="App-main">
-          <TodoList 
-            todoList={todoList}
-            removeTodoItem={(id) => this.removeTodoItem(id)}
-            checkTodoItem={(id, value) => this.checkTodoItem(id, value)}
+          <WatchList 
+            WatchList={watchList}
+            removeWatchListItem={(id) => this.removeWatchListItem(id)}
+            updateWatchListItemStatus={(id, status) => this.updateWatchListItemStatus(id, status)}
           />
         </main>
       </div>

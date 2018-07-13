@@ -1,4 +1,4 @@
-.TodoList-element{
+.WatchList-element{
   list-style:none;
   margin:0;
   padding:0;
@@ -7,14 +7,14 @@
   text-align:left;
 }
 
-.TodoList-element li{
+.WatchList-element li{
   border:1px solid #ccc;
   border-radius:2px;
   margin:5px 0;
   padding:10px 30px 10px 10px;
 }
 
-.TodoList-element .buttons{
+.WatchList-element .buttons{
     margin-top:10px;
 }
 

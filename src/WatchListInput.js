@@ -32,11 +32,11 @@ const movies = [
 ];
 
 const getSuggestions = value => {
-    /*const url = API_SEARCH_URL+value;
+    const url = process.env.REACT_APP_OMDB_DATA_API_URL + "s=" + value;
     const suggestions = fetch(url).then(res => {
 		return res.json();
     });
-    console.log(suggestions);*/
+    console.log(suggestions);
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 

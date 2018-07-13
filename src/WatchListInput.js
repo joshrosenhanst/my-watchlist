@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import './WatchListInput.css';
 
+const API_SEARCH_URL = 'http://www.omdbapi.com/?s=';
+
 const movies = [
     {
         title: 'Jurassic Park',
@@ -30,6 +32,11 @@ const movies = [
 ];
 
 const getSuggestions = value => {
+    /*const url = API_SEARCH_URL+value;
+    const suggestions = fetch(url).then(res => {
+		return res.json();
+    });
+    console.log(suggestions);*/
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 

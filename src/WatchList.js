@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './WatchList.css';
 
-class WatchList extends React.Component {
+class WatchList extends Component {
     constructor(props) {
         super(props);
         this.handleClose = this.handleClose.bind(this);
@@ -58,7 +58,7 @@ class WatchList extends React.Component {
 
         return (
             <div className="list-containers">
-                { listItems.length == 0 ? (<h1 className="no-items">Add Movies or TV Shows to your Watch List</h1>) : null }
+                { listItems.length === 0 ? (<h1 className="no-items">Add Movies or TV Shows to your Watch List</h1>) : null }
                     <ul className="WatchList WatchList-element">{listItems}</ul>
                 <hr />
                 <ul className="CompletedList WatchList-element">{completedItems}</ul>
@@ -67,7 +67,7 @@ class WatchList extends React.Component {
     }
 }
 
-class WatchListItem extends React.Component {
+class WatchListItem extends Component {
 
     render() {
         return (
@@ -98,7 +98,7 @@ class WatchListItem extends React.Component {
     }
 }
 
-class CompletedListItem extends React.Component {
+class CompletedListItem extends Component {
     render(){
         return (
             <li className="notification">

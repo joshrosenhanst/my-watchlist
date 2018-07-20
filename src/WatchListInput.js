@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import './WatchListInput.css';
 
-const API_SEARCH_URL = 'http://www.omdbapi.com/?s=';
-
 const movies = [
     {
         title: 'Jurassic Park',
@@ -65,7 +63,7 @@ const renderSuggestion = suggestion => (
     </div>
   );
 
-class WatchListInput extends React.Component {
+class WatchListInput extends Component {
     constructor(props) {
         super(props);
         //this.handleKeyPress = this.handleKeyPress.bind(this);

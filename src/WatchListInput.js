@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
+import debounce from 'lodash/debounce';
 import './WatchListInput.css';
 
 const movies = [
@@ -78,52 +79,76 @@ class WatchListInput extends Component {
         });
     };
 
-    onSuggestionsFetchRequested = ({ value }) => {
+    /*onSuggestionsFetchRequested = ({ value }) => {
         this.setState({
             suggestions: getSuggestions(value)
         });
-    };
+    };*/
+
+    onSuggestionsFetchRequested = debounce(({ value }) => {
+        let suggestions = getSuggestions(value);
+        let noResults = suggestions.length === 0;
+        this.setState({
+            suggestions: suggestions,
+            noResults: noResults
+        });
+    }, 500);
 
     onSuggestionsClearRequested = () => {
         this.setState({
-            suggestions: []
+            suggestions: [],
+            noResults: false
         });
     };
 
     onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
         this.setState({
             suggestions: [],
-            value: ''
+            value: '',
+            noResults: false
         });
         this.props.addWatchListItem( suggestion );
     }
 
     render() {
-        const { value, suggestions } = this.state;
+        const { value, suggestions, noResults } = this.state;
         const inputProps = {
             placeholder: 'Type a Movie or TV Show...',
             value,
             onChange: this.onChange,
             className: 'input'
         };
-        return (
-            <div className="WatchListInput">
-                <div className="control has-icons-left">
-                    <Autosuggest
-                        suggestions={suggestions}
-                        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                        onSuggestionSelected={this.onSuggestionSelected}
-                        getSuggestionValue={getSuggestionValue}
-                        renderSuggestion={renderSuggestion}
-                        inputProps={inputProps}
-                    />
-                    <span className="icon is-left">
-                        <i className="fas fa-plus"></i>
-                    </span>
+        console.log(noResults);
+        if(process.env.REACT_APP_OMDB_API_KEY){
+            return (
+                <div className="WatchListInput">
+                    <div className="control has-icons-left">
+                        <Autosuggest
+                            suggestions={suggestions}
+                            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                            onSuggestionSelected={this.onSuggestionSelected}
+                            getSuggestionValue={getSuggestionValue}
+                            renderSuggestion={renderSuggestion}
+                            inputProps={inputProps}
+                        />
+                        {
+                            noResults ? (<div className="no-suggestions">No Results</div>) : null
+                        }
+                        <span className="icon is-left">
+                            <i className="fas fa-plus"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }else{
+            return (
+                <div className="notification is-danger">
+                    <i className="fas fa-exclamation-triangle"></i> Unable to connect to OMDB API
+                </div>
+            );
+        }
+        
     }
 }
 

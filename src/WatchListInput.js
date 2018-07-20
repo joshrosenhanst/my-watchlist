@@ -5,7 +5,11 @@ import './WatchListInput.css';
 
 const movies = [
     {
-        title: 'Jurassic Park',
+        Title: 'Jurassic Park',
+        Type: 'movie',
+        Poster:'https://m.media-amazon.com/images/M/MV5BNjc1NzYwODEyMV5BMl5BanBnXkFtZTcwNTcxMzU1MQ@@._V1_SX300.jpg',
+        Year:'2002-2008',
+        imdbID:'tt0306414',
         description: 'Lorem Ipsum dinosaurs',
         thumbnail: 'http://via.placeholder.com/40x54?text=Jurassic+Park',
         image: 'http://via.placeholder.com/120x150?text=Jurassic+Park',
@@ -30,36 +34,15 @@ const movies = [
     },
 ];
 
-const getSuggestions = value => {
-    const url = process.env.REACT_APP_OMDB_DATA_API_URL + "s=" + value;
-    const suggestions = fetch(url).then(res => {
-		return res.json();
-    });
-    console.log(suggestions);
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-
-    return inputLength === 0 ? [] : movies.filter(mov =>
-        mov.title.toLowerCase().slice(0, inputLength) === inputValue
-    );
-};
-
-const getSuggestionValue = suggestion => suggestion.title;
+const getSuggestionValue = suggestion => suggestion.Title;
 
 const renderSuggestion = suggestion => (
     <div>
-    <article className="media">
-        <figure className="media-left Suggestion-image">
-            <p className="image">
-                <img src={suggestion.thumbnail} alt={suggestion.title} />
-            </p>
-        </figure>
-        <div className="media-content">
-            <h3 className="Suggestion-title">
-                {suggestion.title}
-                <span className="Suggestion-year">({suggestion.year})</span>
-            </h3>
-        </div>
+    <article className="Suggestion-container">
+        <h3 className="Suggestion-title">
+            {suggestion.Title}
+            <span className="Suggestion-year">({suggestion.Year})</span>
+        </h3>
     </article>
     </div>
   );
@@ -73,25 +56,46 @@ class WatchListInput extends Component {
             suggestions: []
         };
     }
+
+    getSuggestions = value => {
+        const escapedValue = encodeURIComponent(value);
+        const url = process.env.REACT_APP_OMDB_DATA_API_URL + "s=" + escapedValue;
+        let suggestions = [];
+        fetch(url)
+            .then(res => res.json())
+            .then(
+                (results) => {
+                    if(results.Search){
+                        suggestions = results.Search;
+                        this.setState({
+                            suggestions: suggestions,
+                            noResults: suggestions.length === 0
+                        });
+                    }else{
+                        this.setState({
+                            suggestions: [],
+                            noResults: true
+                        });
+                    }
+                },
+                (error) => {
+                    console.log(error.Error);
+                    this.setState({
+                        suggestions: [],
+                        noResults: false
+                    });
+                }
+            );
+    };
+
     onChange = (event, { newValue }) => {
         this.setState({
             value: newValue
         });
     };
 
-    /*onSuggestionsFetchRequested = ({ value }) => {
-        this.setState({
-            suggestions: getSuggestions(value)
-        });
-    };*/
-
     onSuggestionsFetchRequested = debounce(({ value }) => {
-        let suggestions = getSuggestions(value);
-        let noResults = suggestions.length === 0;
-        this.setState({
-            suggestions: suggestions,
-            noResults: noResults
-        });
+        this.getSuggestions(value);
     }, 500);
 
     onSuggestionsClearRequested = () => {
@@ -113,12 +117,12 @@ class WatchListInput extends Component {
     render() {
         const { value, suggestions, noResults } = this.state;
         const inputProps = {
-            placeholder: 'Type a Movie or TV Show...',
+            placeholder: 'Search for a movie or TV show...',
             value,
             onChange: this.onChange,
             className: 'input'
         };
-        console.log(noResults);
+        //console.log(noResults);
         if(process.env.REACT_APP_OMDB_API_KEY){
             return (
                 <div className="WatchListInput">

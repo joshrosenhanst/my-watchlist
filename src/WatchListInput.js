@@ -61,31 +61,33 @@ class WatchListInput extends Component {
         const escapedValue = encodeURIComponent(value.trim());
         const url = process.env.REACT_APP_OMDB_DATA_API_URL + "s=" + escapedValue;
         let suggestions = [];
-        fetch(url)
-            .then(res => res.json())
-            .then(
-                (results) => {
-                    if(results.Search){
-                        suggestions = results.Search;
-                        this.setState({
-                            suggestions: suggestions,
-                            noResults: suggestions.length === 0
-                        });
-                    }else{
+        if(value.trim().length > 2){
+            fetch(url)
+                .then(res => res.json())
+                .then(
+                    (results) => {
+                        if(results.Search){
+                            suggestions = results.Search;
+                            this.setState({
+                                suggestions: suggestions,
+                                noResults: suggestions.length === 0
+                            });
+                        }else{
+                            this.setState({
+                                suggestions: [],
+                                noResults: true
+                            });
+                        }
+                    },
+                    (error) => {
+                        console.log(error.Error);
                         this.setState({
                             suggestions: [],
-                            noResults: true
+                            noResults: false
                         });
                     }
-                },
-                (error) => {
-                    console.log(error.Error);
-                    this.setState({
-                        suggestions: [],
-                        noResults: false
-                    });
-                }
-            );
+                );
+        }
     };
 
     onChange = (event, { newValue }) => {

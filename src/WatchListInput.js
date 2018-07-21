@@ -58,7 +58,7 @@ class WatchListInput extends Component {
     }
 
     getSuggestions = value => {
-        const escapedValue = encodeURIComponent(value);
+        const escapedValue = encodeURIComponent(value.trim());
         const url = process.env.REACT_APP_OMDB_DATA_API_URL + "s=" + escapedValue;
         let suggestions = [];
         fetch(url)

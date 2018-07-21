@@ -74,20 +74,20 @@ class WatchListItem extends Component {
             <li className="notification">
                 <button className="delete WatchList-Remove" onClick={this.props.handleClose}></button>
                 <article className="media">
-                    <figure className="media-left">
+                    <figure className="media-left ListItem-image">
                         <p className="image">
-                            <img src={this.props.watchListItem.image} alt={this.props.watchListItem.title} />
+                            <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} />
                         </p>
                     </figure>
                     <div className="media-content">
                         <h3 className="ListItem-title">
-                            {this.props.watchListItem.title}
-                            <span className="ListItem-year">{this.props.watchListItem.year}</span>
+                            {this.props.watchListItem.Title}
+                            <span className="ListItem-year">({this.props.watchListItem.Year})</span>
                         </h3>
-                        <p className="ListItem-description">{this.props.watchListItem.description}</p>
+                        <p className="ListItem-description"></p>
                         <p className="buttons">
                             <button className="button WatchList-Complete is-success" onClick={this.props.handleComplete}>
-                                <span className="icon"><i className="fa fa-check"></i></span>
+                                <span className="icon"><i className="fas fa-check"></i></span>
                                 <span>Watched</span>
                             </button>
                         </p>
@@ -105,11 +105,11 @@ class CompletedListItem extends Component {
                 <button className="delete WatchList-Remove" onClick={this.props.handleClose}></button>
                 <article className="CompletedListItem-content">
                     <h3 className="ListItem-title">
-                        {this.props.watchListItem.title}
+                        {this.props.watchListItem.Title}
                     </h3>
                     <p className="buttons">
                         <button className="button WatchList-Reset" onClick={this.props.handleReset}>
-                            <span className="icon"><i className="fa fa-undo"></i></span>
+                            <span className="icon"><i className="fas fa-undo"></i></span>
                             <span>Return to Watch List</span>
                         </button>
                     </p>

@@ -1,4 +1,4 @@
-.WatchList-element{
+.WatchList-container{
   list-style:none;
   margin:0;
   padding:0;
@@ -7,18 +7,77 @@
   text-align:left;
 }
 
-.WatchList-element li{
+.WatchList-ListItem .card-footer-button{
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  color: #363636;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.75rem;
+}
+
+.WatchList-ListItem .card-footer-button:not(:last-child) {
+  border-right: 1px solid #dbdbdb;
+}
+
+.WatchList-ListItem .card-footer-button .icon, .WatchList-ListItem .card-footer-button .icon.is-small, .WatchList-ListItem .card-footer-button .icon.is-medium, .WatchList-ListItem .card-footer-button .icon.is-large {
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.WatchList-ListItem .card-footer-button .icon:first-child:not(:last-child) {
+  margin-left: calc(-0.375em - 1px);
+  margin-right: 0.1875em;
+}
+
+.WatchList-ListItem .card-footer-button .icon:last-child:not(:first-child) {
+  margin-left: 0.1875em;
+  margin-right: calc(-0.375em - 1px);
+}
+
+.WatchList-ListItem .card-footer-button .icon:first-child:last-child {
+  margin-left: calc(-0.375em - 1px);
+  margin-right: calc(-0.375em - 1px);
+}
+
+.WatchList-ListItem .card-footer-button:hover, .WatchList-ListItem .card-footer-button.is-hovered {
+  color: #363636;
+}
+
+.WatchList-ListItem .card-footer-button:focus, .WatchList-ListItem .card-footer-button.is-focused {
+  color: #363636;
+}
+
+.WatchList-ListItem .card-footer-button:active, .WatchList-ListItem .card-footer-button.is-active {
+  color: #363636;
+}
+
+.WatchList-container li{
   border:1px solid #ccc;
   border-radius:2px;
   margin:5px 0;
   padding:10px 30px 10px 10px;
 }
 
-.WatchList-element li.notification{
+.WatchList-container li.notification{
   margin-bottom:0.8rem;
 }
 
-.WatchList-element .buttons{
+.WatchList-container .buttons{
     margin-top:10px;
 }
 
@@ -27,12 +86,18 @@
   color:#9a9a9a;
 }
 
-.ListItem-level{
-    margin-top:10px;
+.ListItem-content{
+  padding:10px 30px 10px 10px;
+  position:relative;
+}
+.ListItem-content>.delete{
+  position: absolute;
+  right: .5rem;
+  top: .5rem;
 }
 
 .ListItem-title{
-  font-size:1.2em;
+  font-size:1em;
 }
 .ListItem-image{
   max-width:100px;

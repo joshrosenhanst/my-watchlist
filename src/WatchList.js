@@ -59,7 +59,7 @@ class WatchList extends Component {
         return (
             <div className="list-containers">
                 { listItems.length === 0 ? (<h1 className="no-items">Add Movies or TV Shows to your Watch List</h1>) : null }
-                    <ul className="WatchList WatchList-element">{listItems}</ul>
+                    <div className="WatchList WatchList-container columns is-multiline">{listItems}</div>
                 <hr />
                 <ul className="CompletedList WatchList-element">{completedItems}</ul>
             </div>
@@ -71,29 +71,27 @@ class WatchListItem extends Component {
 
     render() {
         return (
-            <li className="notification">
-                <button className="delete WatchList-Remove" onClick={this.props.handleClose}></button>
-                <article className="media">
-                    <figure className="media-left ListItem-image">
-                        <p className="image">
+            <div className="column WatchList-ListItem is-4">
+                <div className="card">
+                    <div className="card-image">
+                        <figure className="image is-2by3">
                             <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} />
-                        </p>
-                    </figure>
-                    <div className="media-content">
-                        <h3 className="ListItem-title">
-                            {this.props.watchListItem.Title}
-                            <span className="ListItem-year">({this.props.watchListItem.Year})</span>
-                        </h3>
-                        <p className="ListItem-description"></p>
-                        <p className="buttons">
-                            <button className="button WatchList-Complete is-success" onClick={this.props.handleComplete}>
-                                <span className="icon"><i className="fas fa-check"></i></span>
-                                <span>Watched</span>
-                            </button>
-                        </p>
+                        </figure>
                     </div>
-                </article>
-            </li>
+                    <div className="card-content ListItem-content">
+                        <p className="ListItem-title">{this.props.watchListItem.Title}<span className="ListItem-year">({this.props.watchListItem.Year})</span></p>
+                    </div>
+                    <footer className="card-footer">
+                        <div className="card-footer-button">
+                            <span className="icon"><i className="fas fa-check"></i></span>
+                            <span>Watched</span>
+                        </div>
+                        <div className="card-footer-button WatchList-Remove" onClick={this.props.handleClose}>
+                            <span className="icon"><i className="fas fa-times-circle"></i></span>
+                        </div>
+                    </footer>
+                </div>
+            </div>
         );
     }
 }

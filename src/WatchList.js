@@ -71,7 +71,7 @@ class WatchListItem extends Component {
 
     render() {
         return (
-            <div className="column WatchList-ListItem is-3">
+            <div className="column WatchList-ListItem is-2">
                 <div className="card">
                     <div className="card-image">
                         <figure className="image is-2by3">
@@ -82,9 +82,6 @@ class WatchListItem extends Component {
                                 <p className="ListItem-title">{this.props.watchListItem.Title}<span className="ListItem-year">({this.props.watchListItem.Year})</span></p>
                             </div>
                         </figure>
-                    </div>
-                    <div className="card-content ListItem-content">
-                        <p className="ListItem-title">{this.props.watchListItem.Title}<span className="ListItem-year">({this.props.watchListItem.Year})</span></p>
                     </div>
                     <footer className="card-footer">
                         <div className="card-footer-button">

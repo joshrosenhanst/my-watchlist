@@ -71,11 +71,16 @@ class WatchListItem extends Component {
 
     render() {
         return (
-            <div className="column WatchList-ListItem is-4">
+            <div className="column WatchList-ListItem is-3">
                 <div className="card">
                     <div className="card-image">
                         <figure className="image is-2by3">
-                            <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} />
+                            { (this.props.watchListItem.Poster && this.props.watchListItem.Poster !== "N/A") ?
+                            ( <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} /> ) : 
+                            ( <img src="http://via.placeholder.com/300x427" alt={this.props.watchListItem.Title} /> ) }
+                            <div className="ListItem-overlay">
+                                <p className="ListItem-title">{this.props.watchListItem.Title}<span className="ListItem-year">({this.props.watchListItem.Year})</span></p>
+                            </div>
                         </figure>
                     </div>
                     <div className="card-content ListItem-content">

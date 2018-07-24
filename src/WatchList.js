@@ -84,12 +84,12 @@ class WatchListItem extends Component {
                         </figure>
                     </div>
                     <footer className="card-footer">
-                        <div className="card-footer-button">
-                            <span className="icon"><i className="fas fa-check"></i></span>
+                        <div className="card-footer-button WatchList-Check">
+                            <span className="icon is-small"><i className="fas fa-check"></i></span>
                             <span>Watched</span>
                         </div>
                         <div className="card-footer-button WatchList-Remove" onClick={this.props.handleClose}>
-                            <span className="icon"><i className="fas fa-times-circle"></i></span>
+                            <span className="icon is-small"><i className="fas fa-times-circle"></i></span>
                         </div>
                     </footer>
                 </div>

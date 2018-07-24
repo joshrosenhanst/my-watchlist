@@ -27,7 +27,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0.75rem;
+  padding: 5px 10px;
+  font-size:0.9em;
 }
 
 .WatchList-ListItem .card-footer-button:not(:last-child) {
@@ -100,7 +101,7 @@
   bottom:0;
   position:absolute;
   padding:10px 5px;
-  background-color:rgba(0,0,0,0.7);
+  background-color:rgba(0,0,0,0.6);
   color:#fff;
   width:100%;
   text-shadow:1px 1px 3px rgba(0,0,0,0.5);
@@ -119,6 +120,25 @@
   font-size:0.8em;
   color:#fafafa;
   font-weight:400;
+}
+
+.WatchList-ListItem .card-footer-button.WatchList-Check{
+  /*background-color:#23d160;
+  color:#fff;*/
+}
+
+.WatchList-ListItem .card-footer-button.WatchList-Check:hover{
+  /*background-color:#22c65b;*/
+  color:#22c65b;
+}
+
+.WatchList-ListItem .card-footer-button.WatchList-Remove{
+  /*background-color:#ff3860;
+  color:#fff;*/
+}
+.WatchList-ListItem .card-footer-button.WatchList-Remove:hover{
+  /*background-color:#ff2b56;*/
+  color:#ff2b56;
 }
 
 /*

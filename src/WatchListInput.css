@@ -66,6 +66,10 @@ font-weight: bold;
 .Suggestion-type.series{
     
 }
+.Suggestion-icon{
+    margin-right:5px;
+    color:#8a8a8a;
+}
 .Suggestion-title{
     font-weight:700;
 }

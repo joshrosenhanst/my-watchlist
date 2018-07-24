@@ -3,49 +3,35 @@ import Autosuggest from 'react-autosuggest';
 import debounce from 'lodash/debounce';
 import './WatchListInput.css';
 
-const movies = [
-    {
-        Title: 'Jurassic Park',
-        Type: 'movie',
-        Poster:'https://m.media-amazon.com/images/M/MV5BNjc1NzYwODEyMV5BMl5BanBnXkFtZTcwNTcxMzU1MQ@@._V1_SX300.jpg',
-        Year:'2002-2008',
-        imdbID:'tt0306414',
-        description: 'Lorem Ipsum dinosaurs',
-        thumbnail: 'http://via.placeholder.com/40x54?text=Jurassic+Park',
-        image: 'http://via.placeholder.com/120x150?text=Jurassic+Park',
-        year: '1993',
-        type: 'movie'
-    },
-    {
-        title: 'The Wire',
-        description: 'Lorem Ipsum baltimore',
-        thumbnail: 'http://via.placeholder.com/40x54?text=The+Wire',
-        image: 'http://via.placeholder.com/120x150?text=The+Wire',
-        year: '2000',
-        type: 'TV Show'
-    },
-    {
-        title: 'The Jalopy',
-        description: 'Lorem Ipsum jalopy',
-        thumbnail: 'http://via.placeholder.com/40x54?text=The+Wire',
-        image: 'http://via.placeholder.com/120x150?text=The+Jalopy',
-        year: '1969',
-        type: 'Movie'
-    },
-];
-
 const getSuggestionValue = suggestion => suggestion.Title;
 
-const renderSuggestion = suggestion => (
+const getIconType = type => {
+    switch(type){
+        case 'series':
+            return 'fa fa-tv';
+        case 'movie':
+            return 'fa fa-film';
+        case 'game':
+            return 'fa fa-gamepad';
+        default:
+            return 'fa fa-play';
+    }
+};
+
+const renderSuggestion = suggestion => {
+    let iconType = getIconType(suggestion.Type);
+    return (
     <div>
     <article className="Suggestion-container">
         <h3 className="Suggestion-title">
-            {suggestion.Title}
+            <span className="Suggestion-icon"><i className={iconType}></i></span>
+            {suggestion.Title} {suggestion.Type}
             <span className="Suggestion-year">({suggestion.Year})</span>
         </h3>
     </article>
     </div>
-  );
+    );
+};
 
 class WatchListInput extends Component {
     constructor(props) {

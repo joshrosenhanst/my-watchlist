@@ -115,11 +115,17 @@
   max-width:100px;
 }
 
+.ListItem-subcontent{
+  font-size:0.8em;
+  font-weight:400;
+}
 .ListItem-year{
   display:block;
   font-size:0.8em;
   color:#fafafa;
-  font-weight:400;
+}
+.ListItem-link{
+  float:right;
 }
 
 .WatchList-ListItem .card-footer-button.WatchList-Check{

@@ -79,7 +79,10 @@ class WatchListItem extends Component {
                             ( <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} /> ) : 
                             ( <img src="http://via.placeholder.com/300x427" alt={this.props.watchListItem.Title} /> ) }
                             <div className="ListItem-overlay">
-                                <p className="ListItem-title">{this.props.watchListItem.Title}<span className="ListItem-year">({this.props.watchListItem.Year})</span></p>
+                                <p className="ListItem-title">{this.props.watchListItem.Title}</p>
+                                <div className="ListItem-subcontent">
+                                    <span className="ListItem-year">{this.props.watchListItem.Year}</span>
+                                </div>
                             </div>
                         </figure>
                     </div>

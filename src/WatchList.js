@@ -84,7 +84,7 @@ class WatchListItem extends Component {
                         </figure>
                     </div>
                     <footer className="card-footer">
-                        <div className="card-footer-button WatchList-Check">
+                        <div className="card-footer-button WatchList-Check" onClick={this.props.handleComplete}>
                             <span className="icon is-small"><i className="fas fa-check"></i></span>
                             <span>Watched</span>
                         </div>

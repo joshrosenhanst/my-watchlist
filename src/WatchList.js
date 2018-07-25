@@ -59,7 +59,7 @@ class WatchList extends Component {
         return (
             <div className="list-containers">
                 { listItems.length === 0 ? (<h1 className="no-items">Add Movies or TV Shows to your Watch List</h1>) : null }
-                    <div className="WatchList WatchList-container columns is-multiline">{listItems}</div>
+                    <div className="WatchList WatchList-container columns is-multiline is-mobile">{listItems}</div>
                 <hr />
                 <ul className="CompletedList WatchList-element">{completedItems}</ul>
             </div>
@@ -71,7 +71,7 @@ class WatchListItem extends Component {
 
     render() {
         return (
-            <div className="column WatchList-ListItem is-2">
+            <div className="column WatchList-ListItem is-2-desktop is-4-tablet is-6-mobile">
                 <div className="card">
                     <div className="card-image">
                         <figure className="image is-2by3">
@@ -87,11 +87,11 @@ class WatchListItem extends Component {
                         </figure>
                     </div>
                     <footer className="card-footer">
-                        <div className="card-footer-button WatchList-Check" onClick={this.props.handleComplete}>
+                        <div className="card-footer-button WatchList-Check" onClick={this.props.handleComplete} title="Mark as Watched">
                             <span className="icon is-small"><i className="fas fa-check"></i></span>
                             <span>Watched</span>
                         </div>
-                        <div className="card-footer-button WatchList-Remove" onClick={this.props.handleClose}>
+                        <div className="card-footer-button WatchList-Remove" onClick={this.props.handleClose} title="Remove from Watch List">
                             <span className="icon is-small"><i className="fas fa-times-circle"></i></span>
                         </div>
                     </footer>

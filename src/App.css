@@ -12,8 +12,9 @@ body{
 }
 
 .App-header {
-  background-color: #363636;
-  padding: 20px;
+  background-color: #3a3a3a;
+  background-image:linear-gradient(141deg,#1f191a 0,#3a3a3a 71%,#46403f 100%);
+  padding: 40px 20px;
   color: white;
 }
 

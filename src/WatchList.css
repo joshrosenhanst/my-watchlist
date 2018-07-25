@@ -1,10 +1,4 @@
 .WatchList-container{
-  list-style:none;
-  margin:0;
-  padding:0;
-  /*max-width:600px;*/
-  margin:0 auto;
-  text-align:left;
 }
 
 .WatchList-ListItem .card-footer-button{
@@ -27,7 +21,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 5px 10px;
+  padding: 8px 10px;
   font-size:0.9em;
 }
 
@@ -79,7 +73,7 @@
 }
 
 .WatchList-container .buttons{
-    margin-top:10px;
+  margin-top:10px;
 }
 
 .CompletedList li{
@@ -131,6 +125,8 @@
 .WatchList-ListItem .card-footer-button.WatchList-Check{
   /*background-color:#23d160;
   color:#fff;*/
+  width:80%;
+  flex:none;
 }
 
 .WatchList-ListItem .card-footer-button.WatchList-Check:hover{
@@ -141,6 +137,7 @@
 .WatchList-ListItem .card-footer-button.WatchList-Remove{
   /*background-color:#ff3860;
   color:#fff;*/
+
 }
 .WatchList-ListItem .card-footer-button.WatchList-Remove:hover{
   /*background-color:#ff2b56;*/

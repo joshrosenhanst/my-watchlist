@@ -123,42 +123,16 @@
 }
 
 .WatchList-ListItem .card-footer-button.WatchList-Check{
-  /*background-color:#23d160;
-  color:#fff;*/
   width:80%;
   flex:none;
 }
 
 .WatchList-ListItem .card-footer-button.WatchList-Check:hover{
-  /*background-color:#22c65b;*/
   color:#22c65b;
 }
 
 .WatchList-ListItem .card-footer-button.WatchList-Remove{
-  /*background-color:#ff3860;
-  color:#fff;*/
-
 }
 .WatchList-ListItem .card-footer-button.WatchList-Remove:hover{
-  /*background-color:#ff2b56;*/
   color:#ff2b56;
 }
-
-/*
-.App-main .list-element li .remove-todo-item{
-  top:0;
-  bottom:0;
-  margin:auto 0;
-}
-
-.App-main .list-element li .check-todo-item{
-  position:absolute;
-  top:0;
-  bottom:0;
-  margin:auto 0;
-}
-
-.App-main .list-element li .todo-item-text{
-  margin-left:22px;
-}
-*/

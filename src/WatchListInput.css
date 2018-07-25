@@ -38,7 +38,7 @@ list-style-type: none;
 
 .react-autosuggest__suggestion {
 cursor: pointer;
-padding: 5px;
+padding: 5px 5px 5px 0;
 }
 
 .react-autosuggest__suggestion--highlighted {
@@ -54,24 +54,18 @@ font-weight: bold;
     margin-right:5px;
     max-width:30px;
 }
-.Suggestion-type{
-    text-transform: capitalize;
-    font-weight:400;
-    font-size:10px;
-    float:right;
-}
-.Suggestion-type.movie{
-    
-}
-.Suggestion-type.series{
-    
-}
 .Suggestion-icon{
-    margin-right:5px;
-    color:#8a8a8a;
+    margin-right:4px;
+    color:#bababa;
+    position:relative;
+    width:2.25em;
+    height:1rem;
+    text-align:center;
+    display:inline-block;
 }
 .Suggestion-title{
     font-weight:700;
+    position:relative;
 }
 .Suggestion-year{
     margin-left:2px;

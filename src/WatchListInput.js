@@ -25,7 +25,7 @@ const renderSuggestion = suggestion => {
     <article className="Suggestion-container">
         <h3 className="Suggestion-title">
             <span className="Suggestion-icon"><i className={iconType}></i></span>
-            {suggestion.Title} {suggestion.Type}
+            {suggestion.Title}
             <span className="Suggestion-year">({suggestion.Year})</span>
         </h3>
     </article>

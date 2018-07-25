@@ -29,17 +29,24 @@ class App extends Component {
     localStorage.setItem("todo-app-nextid", nextID);
   }
 
+  checkDuplicateIMDBID(id){
+    let matches = this.state.WatchList.filter((item) => item.watchListItem.imdbID === id);
+    return matches.length;
+  }
+
   addWatchListItem(watchListItem) {
     let updatedID = parseInt(this.state.nextID) + 1;
-    let updatedList = this.state.WatchList.concat([{
-      id:updatedID, 
-      watchListItem:watchListItem
-    }]);
-    this.setState({
-      WatchList: updatedList,
-      nextID: updatedID
-    });
-    this.updateStorage(updatedList, updatedID);
+    if(!this.checkDuplicateIMDBID(watchListItem.imdbID)){
+      let updatedList = this.state.WatchList.concat([{
+        id:updatedID, 
+        watchListItem:watchListItem
+      }]);
+      this.setState({
+        WatchList: updatedList,
+        nextID: updatedID
+      });
+      this.updateStorage(updatedList, updatedID);
+    }
   }
 
   removeWatchListItem(id) {

@@ -39,7 +39,9 @@ class WatchListInput extends Component {
         //this.handleKeyPress = this.handleKeyPress.bind(this);
         this.state = {
             value: '',
-            suggestions: []
+            suggestions: [],
+            noResult: false,
+            isLoading: false
         };
     }
 
@@ -47,6 +49,9 @@ class WatchListInput extends Component {
         const escapedValue = encodeURIComponent(value.trim());
         const url = process.env.REACT_APP_OMDB_DATA_API_URL + "s=" + escapedValue;
         let suggestions = [];
+        this.setState({
+            isLoading: true
+        });
         if(value.trim().length > 2){
             fetch(url)
                 .then(res => res.json())
@@ -56,12 +61,14 @@ class WatchListInput extends Component {
                             suggestions = results.Search;
                             this.setState({
                                 suggestions: suggestions,
-                                noResults: suggestions.length === 0
+                                noResults: suggestions.length === 0,
+                                isLoading: false
                             });
                         }else{
                             this.setState({
                                 suggestions: [],
-                                noResults: true
+                                noResults: true,
+                                isLoading: false
                             });
                         }
                     },
@@ -69,7 +76,8 @@ class WatchListInput extends Component {
                         console.log(error.Error);
                         this.setState({
                             suggestions: [],
-                            noResults: false
+                            noResults: false,
+                            isLoading: false
                         });
                     }
                 );
@@ -78,7 +86,8 @@ class WatchListInput extends Component {
 
     onChange = (event, { newValue }) => {
         this.setState({
-            value: newValue
+            value: newValue,
+            isLoading: true
         });
     };
 
@@ -103,7 +112,7 @@ class WatchListInput extends Component {
     }
 
     render() {
-        const { value, suggestions, noResults } = this.state;
+        const { value, suggestions, noResults, isLoading } = this.state;
         const inputProps = {
             placeholder: 'Search for a movie or TV show...',
             value,
@@ -114,7 +123,7 @@ class WatchListInput extends Component {
         if(process.env.REACT_APP_OMDB_API_KEY){
             return (
                 <div className="WatchListInput">
-                    <div className="control has-icons-left">
+                    <div className={"control has-icons-left"+(isLoading?" is-loading":"")}>
                         <Autosuggest
                             suggestions={suggestions}
                             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

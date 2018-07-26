@@ -5,6 +5,18 @@
 .WatchListInput .input{
     font-size:1.3rem;
 }
+.WatchListInput .input::-moz-placeholder {
+    color:rgba(54,54,54,.6)
+}
+.WatchListInput .input::-webkit-input-placeholder {
+    color:rgba(54,54,54,.6)
+}
+.WatchListInput .input:-moz-placeholder {
+    color:rgba(54,54,54,.6)
+}
+.WatchListInput .input:-ms-input-placeholder {
+    color:rgba(54,54,54,.6)
+}
 
 .react-autosuggest__suggestions-container {
     display: none;
@@ -67,6 +79,7 @@ font-weight: bold;
 }
 .Suggestion-Poster{
     width:32px;
+    height:48px;
 }
 .Suggestion-subtext{
     display:block;

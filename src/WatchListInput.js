@@ -25,9 +25,11 @@ const renderSuggestion = suggestion => {
     <article className="Suggestion-container">
         <div className="media">
             <div className="media-left">
-                { (suggestion.Poster && suggestion.Poster !== "N/A") ?
-                ( <img className="Suggestion-Poster" src={suggestion.Poster} alt={suggestion.Title} /> ) : 
-                ( <img className="Suggestion-Poster" src="/default_poster.png" alt={suggestion.Title} /> ) }
+                <figure class="image Suggestion-Poster">
+                    { (suggestion.Poster && suggestion.Poster !== "N/A") ?
+                    ( <img src={suggestion.Poster} alt={suggestion.Title} /> ) : 
+                    ( <img src="/default_poster.png" alt={suggestion.Title} /> ) }
+                </figure>
             </div>
             <div className="media-content">
                 <div className="Suggestion-title">

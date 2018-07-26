@@ -59,12 +59,22 @@ class WatchList extends Component {
 
         return (
             <div className="list-containers">
-                { listItems.length === 0 ? (<h1 className="no-items">Add Movies or TV Shows to your Watch List</h1>) : null }
                 <h3 className="WatchList-header-title">My Watch List</h3>
-                    <div className="WatchList WatchList-container columns is-multiline is-mobile">{listItems}</div>
-                <hr />
-                <h3 className="WatchList-header-title CompletedList-header-title">Watched</h3>
-                <div className="CompletedList WatchList WatchList-container columns is-multiline is-mobile">{completedItems}</div>
+                    <div className="WatchList WatchList-container columns is-multiline is-mobile is-centered">{listItems}</div>
+
+                { listItems.length === 0 && 
+                (
+                <div className="empty-WatchList">
+                    <div className="notification">Add Movies or TV Shows to your Watch List</div>
+                </div>
+                ) }
+                { completedItems.length > 0 && (
+                    <div className="CompletedList-container">
+                        <hr />
+                        <h3 className="WatchList-header-title CompletedList-header-title">Watched</h3>
+                        <div className="CompletedList WatchList WatchList-container columns is-multiline is-mobile  is-centered">{completedItems}</div>
+                    </div>
+                )}
             </div>
         );
     }

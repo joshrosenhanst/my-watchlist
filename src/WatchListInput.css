@@ -14,7 +14,7 @@
 .react-autosuggest__suggestions-container--open {
     display: block;
     position: absolute;
-    top: 30px;
+    top: 45px;
     border: 1px solid #aaa;
     background-color: #fff;
     font-weight: 700;
@@ -46,7 +46,7 @@ list-style-type: none;
 
 .react-autosuggest__suggestion {
 cursor: pointer;
-padding: 5px 5px 5px 5px;
+padding: 2px 5px;
 }
 
 .react-autosuggest__suggestion--highlighted {
@@ -71,6 +71,7 @@ font-weight: bold;
 .Suggestion-subtext{
     display:block;
     font-weight:400;
+    text-transform: capitalize;
 }
 .Suggestion-icon{
     color:#bababa;

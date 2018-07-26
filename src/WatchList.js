@@ -90,8 +90,8 @@ class WatchListItem extends Component {
                     </div>
                     <footer className="card-footer">
                         <div className="card-footer-button WatchList-Check" onClick={this.props.handleComplete} title="Mark as Watched">
-                            <span className="icon is-small"><i className="fas fa-check"></i></span>
-                            <span>Watched</span>
+                            <span className="icon is-small card-footer-button-icon"><i className="fas fa-check"></i></span>
+                            <span className="card-footer-button-text">Watched</span>
                         </div>
                         <div className="card-footer-button WatchList-Remove" onClick={this.props.handleClose} title="Remove from Watch List">
                             <span className="icon is-small"><i className="fas fa-times-circle"></i></span>
@@ -123,8 +123,8 @@ class CompletedListItem extends Component {
                     </div>
                     <footer className="card-footer">
                         <div className="card-footer-button WatchList-Reset" onClick={this.props.handleReset} title="Return to Watch List">
-                            <span className="icon is-small"><i className="fas fa-undo"></i></span>
-                            <span>Return</span>
+                            <span className="icon is-small card-footer-button-icon"><i className="fas fa-undo"></i></span>
+                            <span className="card-footer-button-text">Return</span>
                         </div>
                         <div className="card-footer-button WatchList-Remove" onClick={this.props.handleClose} title="Remove from Watch List">
                             <span className="icon is-small"><i className="fas fa-times-circle"></i></span>

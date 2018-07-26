@@ -32,7 +32,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 8px 10px;
+  padding: 8px 2px;
   font-size:0.9em;
 }
 
@@ -45,7 +45,7 @@
   width: 1.5em;
 }
 
-.WatchList-ListItem .card-footer-button .icon:first-child:not(:last-child) {
+/*.WatchList-ListItem .card-footer-button .icon:first-child:not(:last-child) {
   margin-left: calc(-0.375em - 1px);
   margin-right: 0.1875em;
 }
@@ -58,7 +58,7 @@
 .WatchList-ListItem .card-footer-button .icon:first-child:last-child {
   margin-left: calc(-0.375em - 1px);
   margin-right: calc(-0.375em - 1px);
-}
+}*/
 
 .WatchList-ListItem .card-footer-button:hover, .WatchList-ListItem .card-footer-button.is-hovered {
   color: #363636;
@@ -142,10 +142,17 @@
 .ListItem-link{
   float:right;
 }
-
-.WatchList-ListItem .card-footer-button.WatchList-Check, .WatchList-ListItem .card-footer-button.WatchList-Reset{
-  width:80%;
-  flex:none;
+.WatchList-ListItem .card-footer-button-text{
+  display:none;
+}
+@media(min-width:400px){
+  .WatchList-ListItem .card-footer-button.WatchList-Check, .WatchList-ListItem .card-footer-button.WatchList-Reset{
+    width:80%;
+    flex:none;
+  }
+  .WatchList-ListItem .card-footer-button-text{
+    display:inline;
+  }
 }
 
 .WatchList-ListItem .card-footer-button.WatchList-Check:hover{

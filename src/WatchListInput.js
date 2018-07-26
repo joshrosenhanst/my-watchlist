@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 import debounce from 'lodash/debounce';
 import './WatchListInput.css';
+import default_poster from './img/default_poster.png';
 
 const getSuggestionValue = suggestion => suggestion.Title;
 
@@ -28,7 +29,7 @@ const renderSuggestion = suggestion => {
                 <figure class="image Suggestion-Poster">
                     { (suggestion.Poster && suggestion.Poster !== "N/A") ?
                     ( <img src={suggestion.Poster} alt={suggestion.Title} /> ) : 
-                    ( <img src="/default_poster.png" alt={suggestion.Title} /> ) }
+                    ( <img src={default_poster} alt={suggestion.Title} /> ) }
                 </figure>
             </div>
             <div className="media-content">

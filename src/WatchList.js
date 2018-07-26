@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './WatchList.css';
+import default_poster from './img/default_poster.png';
 
 class WatchList extends Component {
     constructor(props) {
@@ -79,7 +80,7 @@ class WatchListItem extends Component {
                         <figure className="image is-2by3">
                             { (this.props.watchListItem.Poster && this.props.watchListItem.Poster !== "N/A") ?
                             ( <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} /> ) : 
-                            ( <img src="/default_poster.png" alt={this.props.watchListItem.Title} /> ) }
+                            ( <img src={default_poster} alt={this.props.watchListItem.Title} /> ) }
                             <div className="ListItem-overlay">
                                 <p className="ListItem-title">{this.props.watchListItem.Title}</p>
                                 <div className="ListItem-subcontent">
@@ -112,7 +113,7 @@ class CompletedListItem extends Component {
                         <figure className="image is-2by3">
                             { (this.props.watchListItem.Poster && this.props.watchListItem.Poster !== "N/A") ?
                             ( <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title} /> ) : 
-                            ( <img src="/default_poster.png" alt={this.props.watchListItem.Title} /> ) }
+                            ( <img src={default_poster} alt={this.props.watchListItem.Title} /> ) }
                             <div className="ListItem-overlay">
                                 <p className="ListItem-title">{this.props.watchListItem.Title}</p>
                                 <div className="ListItem-subcontent">

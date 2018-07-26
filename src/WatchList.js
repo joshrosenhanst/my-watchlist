@@ -59,13 +59,13 @@ class WatchList extends Component {
 
         return (
             <div className="list-containers">
-                <h3 className="WatchList-header-title">My Watch List</h3>
+                <h3 className="WatchList-header-title">Up Next</h3>
                     <div className="WatchList WatchList-container columns is-multiline is-mobile is-centered">{listItems}</div>
 
                 { listItems.length === 0 && 
                 (
                 <div className="empty-WatchList">
-                    <div className="notification">Add Movies or TV Shows to your Watch List</div>
+                    <div className="notification">Add Movies or TV Shows to your WatchList</div>
                 </div>
                 ) }
                 { completedItems.length > 0 && (

@@ -1,6 +1,6 @@
 {
-  "short_name": "Watch List",
-  "name": "Watch List Tracker App",
+  "short_name": "My WatchList",
+  "name": "My WatchList - Track the movies and TV shows you want to watch.",
   "icons": [
     {
       "src": "favicon.ico",

@@ -136,7 +136,8 @@ class WatchListInput extends Component {
             value,
             onChange: this.onChange,
             className: 'input',
-            id: 'WatchList-autosuggest-input'
+            id: 'WatchList-autosuggest-input',
+            'aria-labelledby': 'app-subtitle'
         };
         //console.log(noResults);
         if(process.env.REACT_APP_OMDB_API_KEY){

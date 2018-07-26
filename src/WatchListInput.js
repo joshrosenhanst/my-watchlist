@@ -23,11 +23,19 @@ const renderSuggestion = suggestion => {
     return (
     <div>
     <article className="Suggestion-container">
-        <h3 className="Suggestion-title">
-            <span className="Suggestion-icon"><i className={iconType}></i></span>
-            {suggestion.Title}
-            <span className="Suggestion-year">({suggestion.Year})</span>
-        </h3>
+        <div className="media">
+            <div className="media-left">
+                { (suggestion.Poster && suggestion.Poster !== "N/A") ?
+                ( <img class="Suggestion-Poster" src={suggestion.Poster} alt={suggestion.Title} /> ) : 
+                ( <img class="Suggestion-Poster" src="/default_poster.png" alt={suggestion.Title} /> ) }
+            </div>
+            <div className="media-content">
+                <div className="Suggestion-title">
+                    {suggestion.Title} 
+                    <small className="Suggestion-subtext">{suggestion.Year} {suggestion.Type}</small>
+                </div>
+            </div>
+        </div>
     </article>
     </div>
     );

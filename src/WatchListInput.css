@@ -38,7 +38,7 @@ list-style-type: none;
 
 .react-autosuggest__suggestion {
 cursor: pointer;
-padding: 5px 5px 5px 0;
+padding: 5px 5px 5px 5px;
 }
 
 .react-autosuggest__suggestion--highlighted {
@@ -54,13 +54,24 @@ font-weight: bold;
     margin-right:5px;
     max-width:30px;
 }
+.Suggestion-container .media-left{
+    margin-right:5px;
+}
+.Suggestion-Poster{
+    width:32px;
+}
+.Suggestion-subtext{
+    display:block;
+    font-weight:400;
+}
 .Suggestion-icon{
-    margin-right:4px;
     color:#bababa;
     position:relative;
     width:2.25em;
     height:1rem;
     text-align:center;
+}
+.Suggestion-text{
     display:inline-block;
 }
 .Suggestion-title{

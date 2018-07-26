@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   getNextIDStorage() {
-    return parseInt(localStorage.getItem("todo-app-nextid")) || 0;
+    return parseInt(localStorage.getItem("todo-app-nextid"),2) || 0;
   }
 
   updateStorage(watchList,nextID){
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   addWatchListItem(watchListItem) {
-    let updatedID = parseInt(this.state.nextID) + 1;
+    let updatedID = parseInt(this.state.nextID,2) + 1;
     if(!this.checkDuplicateIMDBID(watchListItem.imdbID)){
       let updatedList = this.state.WatchList.concat([{
         id:updatedID, 

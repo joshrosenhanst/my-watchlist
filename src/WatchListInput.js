@@ -25,7 +25,7 @@ const renderSuggestion = suggestion => {
     <article className="Suggestion-container">
         <div className="media">
             <div className="media-left">
-                <figure class="image Suggestion-Poster">
+                <figure className="image Suggestion-Poster">
                     { (suggestion.Poster && suggestion.Poster !== "N/A") ?
                     ( <img src={suggestion.Poster} alt={suggestion.Title} /> ) : 
                     ( <img src={default_poster} alt={suggestion.Title} /> ) }
@@ -135,7 +135,8 @@ class WatchListInput extends Component {
             placeholder: 'Search for a movie or TV show...',
             value,
             onChange: this.onChange,
-            className: 'input'
+            className: 'input',
+            id: 'WatchList-autosuggest-input'
         };
         //console.log(noResults);
         if(process.env.REACT_APP_OMDB_API_KEY){
@@ -150,6 +151,7 @@ class WatchListInput extends Component {
                             getSuggestionValue={getSuggestionValue}
                             renderSuggestion={renderSuggestion}
                             inputProps={inputProps}
+                            focusInputOnSuggestionClick={false}
                         />
                         {
                             noResults ? (<div className="no-suggestions">No Results</div>) : null

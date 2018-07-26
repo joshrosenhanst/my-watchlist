@@ -39,6 +39,9 @@
 }
 
 .no-suggestions{
+    display: block;
+    position: absolute;
+    top: 45px;
     font-style:italic;
     background-color:#fff;
     border-bottom-left-radius: 4px;

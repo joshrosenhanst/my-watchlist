@@ -26,8 +26,8 @@ const renderSuggestion = suggestion => {
         <div className="media">
             <div className="media-left">
                 { (suggestion.Poster && suggestion.Poster !== "N/A") ?
-                ( <img class="Suggestion-Poster" src={suggestion.Poster} alt={suggestion.Title} /> ) : 
-                ( <img class="Suggestion-Poster" src="/default_poster.png" alt={suggestion.Title} /> ) }
+                ( <img className="Suggestion-Poster" src={suggestion.Poster} alt={suggestion.Title} /> ) : 
+                ( <img className="Suggestion-Poster" src="/default_poster.png" alt={suggestion.Title} /> ) }
             </div>
             <div className="media-content">
                 <div className="Suggestion-title">
@@ -106,7 +106,8 @@ class WatchListInput extends Component {
     onSuggestionsClearRequested = () => {
         this.setState({
             suggestions: [],
-            noResults: false
+            noResults: false,
+            isLoading: false
         });
     };
 
@@ -114,7 +115,8 @@ class WatchListInput extends Component {
         this.setState({
             suggestions: [],
             value: '',
-            noResults: false
+            noResults: false,
+            isLoading: false
         });
         this.props.addWatchListItem( suggestion );
     }

@@ -72,7 +72,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Watch List</h1>
+          <h1 className="App-title">Watch List Tracker</h1>
+          <h2 className="App-subtitle subtitle">Search to add Movies or TV Shows to your Watch List</h2>
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />

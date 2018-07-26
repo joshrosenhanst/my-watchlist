@@ -94,14 +94,20 @@ class WatchListInput extends Component {
 
     onChange = (event, { newValue }) => {
         this.setState({
-            value: newValue,
-            isLoading: true
+            value: newValue
         });
     };
 
-    onSuggestionsFetchRequested = debounce(({ value }) => {
+    debouncedSuggestions = debounce((value) => {
         this.getSuggestions(value);
     }, 500);
+
+    onSuggestionsFetchRequested = ({ value }) => {
+        this.setState({
+            isLoading: true
+        });
+        this.debouncedSuggestions(value);
+    };
 
     onSuggestionsClearRequested = () => {
         this.setState({

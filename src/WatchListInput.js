@@ -6,7 +6,7 @@ import default_poster from './img/default_poster.png';
 
 const getSuggestionValue = suggestion => suggestion.Title;
 
-const getIconType = type => {
+/*const getIconType = type => {
     switch(type){
         case 'series':
             return 'fa fa-tv';
@@ -17,10 +17,9 @@ const getIconType = type => {
         default:
             return 'fa fa-play';
     }
-};
+};*/
 
 const renderSuggestion = suggestion => {
-    let iconType = getIconType(suggestion.Type);
     return (
     <div>
     <article className="Suggestion-container">

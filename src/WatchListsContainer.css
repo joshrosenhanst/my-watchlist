@@ -1,0 +1,21 @@
+.WatchList-header-title{
+    font-weight:400;
+    font-size:2rem;
+    line-height:1.25;
+  }
+  .CompletedList-header-title{
+    color:#6a6a6a;
+    font-style:italic;
+  }
+  .WatchList-container{
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .CompletedList{
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .empty-WatchList{
+    max-width:400px;
+    margin:0 auto;
+  }

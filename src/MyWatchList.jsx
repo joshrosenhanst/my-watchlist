@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 //import { DragDropContext } from 'react-dnd';
 //import HTML5Backend from 'react-dnd-html5-backend';
 import WatchListInput from './WatchListInput';
-import WatchList from './WatchList';
+import WatchListsContainer from './WatchListsContainer';
 import './MyWatchList.css';
 
 class MyWatchList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      WatchList: this.getWatchListStorage(),
+      watchListArray: this.getWatchListStorage(),
       nextID: this.getNextIDStorage(),
     };
   }
@@ -30,7 +30,7 @@ class MyWatchList extends Component {
   }
 
   checkDuplicateIMDBID(id){
-    let matches = this.state.WatchList.filter((item) => item.watchListItem.imdbID === id);
+    let matches = this.state.watchListArray.filter((item) => item.watchListItem.imdbID === id);
     return matches.length;
   }
 
@@ -41,9 +41,9 @@ class MyWatchList extends Component {
         id:updatedID, 
         watchListItem:watchListItem
       }];
-      let updatedList = newItem.concat(this.state.WatchList);
+      let updatedList = newItem.concat(this.state.watchListArray);
       this.setState({
-        WatchList: updatedList,
+        watchListArray: updatedList,
         nextID: updatedID
       });
       this.updateStorage(updatedList, updatedID);
@@ -51,25 +51,25 @@ class MyWatchList extends Component {
   }
 
   removeWatchListItem(id) {
-    let updatedList = this.state.WatchList.filter((item) => item.id !== id);
+    let updatedList = this.state.watchListArray.filter((item) => item.id !== id);
     this.setState({
-      WatchList: updatedList
+      watchListArray: updatedList
     });
     this.updateStorage(updatedList, this.state.nextID);
   }
 
   updateWatchListItemStatus(id,status){
     //clone the array and then map the cloned array to set completed on the matching ID
-    const WatchList = this.state.WatchList.slice(0);
-    let updatedList = WatchList.map((item) => item.id !== id ? item : {...item, completed:status});
+    const watchListArray = this.state.watchListArray.slice(0);
+    let updatedList = watchListArray.map((item) => item.id !== id ? item : {...item, completed:status});
     this.setState({
-      WatchList: updatedList
+      watchListArray: updatedList
     });
     this.updateStorage(updatedList, this.state.nextID);
   }
 
   render() {
-    const watchList = this.state.WatchList;
+    const watchListArray = this.state.watchListArray;
     return (
       <div className="MyWatchList">
         <header className="MyWatchList-header">
@@ -80,8 +80,8 @@ class MyWatchList extends Component {
           />
         </header>
         <main className="MyWatchList-main">
-          <WatchList 
-            WatchList={watchList}
+          <WatchListsContainer
+            listItems={watchListArray}
             removeWatchListItem={(id) => this.removeWatchListItem(id)}
             updateWatchListItemStatus={(id, status) => this.updateWatchListItemStatus(id, status)}
           />

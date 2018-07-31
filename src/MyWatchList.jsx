@@ -86,6 +86,9 @@ class MyWatchList extends Component {
             updateWatchListItemStatus={(id, status) => this.updateWatchListItemStatus(id, status)}
           />
         </main>
+        <footer className="MyWatchList-footer">
+            <p>Your WatchList is stored locally in your browser using HTML5 LocalStorage. Movie information and posters provided by <a href="https://www.omdbapi.com/">OMDB</a>.</p>
+        </footer>
       </div>
     );
   }

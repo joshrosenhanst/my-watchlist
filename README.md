@@ -2,6 +2,13 @@
 
 My WatchList is a React.js project to track movies and TV shows. Bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## Local Development
+
+1. `npm install`
+2. Get an API key from [OMDB](http://www.omdbapi.com/apikey.aspx)
+3. Create `.env.local` file in the root directory add the following: `REACT_APP_OMDB_API_KEY=<your OMDB API key>`
+4. `npm start`
+
 ## Available Scripts
 
 In the project directory, you can run:

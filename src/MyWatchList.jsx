@@ -16,17 +16,17 @@ class MyWatchList extends Component {
   }
 
   getWatchListStorage() {
-    let storage = localStorage.getItem("todo-app-watchlist");
+    let storage = localStorage.getItem(process.env.REACT_APP_STORAGE_LIST);
     return JSON.parse(storage) || [];
   }
 
   getNextIDStorage() {
-    return parseInt(localStorage.getItem("todo-app-nextid"),10) || 0;
+    return parseInt(localStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
   }
 
   updateStorage(watchList,nextID){
-    localStorage.setItem("todo-app-watchlist", JSON.stringify(watchList));
-    localStorage.setItem("todo-app-nextid", nextID);
+    localStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
+    localStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
   }
 
   checkDuplicateIMDBID(id){

@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 //import HTML5Backend from 'react-dnd-html5-backend';
 import WatchListInput from './WatchListInput';
 import WatchList from './WatchList';
-import './App.css';
+import './MyWatchList.css';
 
-class App extends Component {
+class MyWatchList extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -71,15 +71,15 @@ class App extends Component {
   render() {
     const watchList = this.state.WatchList;
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">My WatchList</h1>
-          <h2 className="App-subtitle subtitle" id="app-subtitle">Search to add Movies or TV Shows to your WatchList</h2>
+      <div className="MyWatchList">
+        <header className="MyWatchList-header">
+          <h1 className="MyWatchList-title">My WatchList</h1>
+          <h2 className="MyWatchList-subtitle subtitle" id="MyWatchList-subtitle">Search to add Movies or TV Shows to your WatchList</h2>
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />
         </header>
-        <main className="App-main">
+        <main className="MyWatchList-main">
           <WatchList 
             WatchList={watchList}
             removeWatchListItem={(id) => this.removeWatchListItem(id)}
@@ -91,4 +91,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default MyWatchList;

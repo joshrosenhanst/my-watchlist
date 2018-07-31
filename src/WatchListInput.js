@@ -6,19 +6,6 @@ import default_poster from './img/default_poster.png';
 
 const getSuggestionValue = suggestion => suggestion.Title;
 
-/*const getIconType = type => {
-    switch(type){
-        case 'series':
-            return 'fa fa-tv';
-        case 'movie':
-            return 'fa fa-film';
-        case 'game':
-            return 'fa fa-gamepad';
-        default:
-            return 'fa fa-play';
-    }
-};*/
-
 const renderSuggestion = suggestion => {
     return (
     <div>
@@ -46,7 +33,6 @@ const renderSuggestion = suggestion => {
 class WatchListInput extends Component {
     constructor(props) {
         super(props);
-        //this.handleKeyPress = this.handleKeyPress.bind(this);
         this.state = {
             value: '',
             suggestions: [],

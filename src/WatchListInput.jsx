@@ -8,8 +8,7 @@ const getSuggestionValue = suggestion => suggestion.Title;
 
 const renderSuggestion = suggestion => {
     return (
-    <div>
-    <article className="Suggestion-container">
+    <div className="Suggestion-container">
         <div className="media">
             <div className="media-left">
                 <figure className="image Suggestion-Poster">
@@ -25,7 +24,6 @@ const renderSuggestion = suggestion => {
                 </div>
             </div>
         </div>
-    </article>
     </div>
     );
 };

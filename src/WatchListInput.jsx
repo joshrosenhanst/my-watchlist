@@ -14,8 +14,8 @@ const renderSuggestion = suggestion => {
             <div className="media-left">
                 <figure className="image Suggestion-Poster">
                     { (suggestion.Poster && suggestion.Poster !== "N/A") ?
-                    ( <img src={suggestion.Poster} alt={suggestion.Title} /> ) : 
-                    ( <img src={default_poster} alt={suggestion.Title} /> ) }
+                    ( <img src={suggestion.Poster} alt={suggestion.Title+" Poster preview"} /> ) : 
+                    ( <img src={default_poster} alt={suggestion.Title+" Poster preview"} /> ) }
                 </figure>
             </div>
             <div className="media-content">

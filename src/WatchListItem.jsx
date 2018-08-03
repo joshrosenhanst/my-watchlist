@@ -15,7 +15,7 @@ class WatchListItem extends Component {
                             <div className="ListItem-overlay">
                                 <p className="ListItem-title">{this.props.watchListItem.Title}</p>
                                 <div className="ListItem-subcontent">
-                                    <span className="ListItem-year">{this.props.watchListItem.Year}</span>
+                                    <span className="ListItem-year">{this.props.watchListItem.Year}</span> <span className="ListItem-movie">{this.props.watchListItem.Type}</span>
                                 </div>
                             </div>
                         </figure>

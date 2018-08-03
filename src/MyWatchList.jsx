@@ -74,7 +74,6 @@ class MyWatchList extends Component {
       <div className="MyWatchList">
         <header className="MyWatchList-header">
           <h1 className="MyWatchList-title">My WatchList</h1>
-          <h2 className="MyWatchList-subtitle subtitle" id="MyWatchList-subtitle">Search to add Movies or TV Shows to your WatchList</h2>
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />

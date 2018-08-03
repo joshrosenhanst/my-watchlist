@@ -24,11 +24,6 @@ body{
   margin: 0 auto;
 }
 
-.MyWatchList-header .WatchListInput{
-  max-width:400px;
-  margin:20px auto 0 auto;
-}
-
 .MyWatchList-main {
   padding:20px;
 }

@@ -1,5 +1,13 @@
 .WatchListInput .control{
     font-size:1.3rem;
+    max-width:400px;
+    margin:20px auto 0 auto;
+}
+
+.WatchListInput .label{
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #8a8a8a;
 }
 
 .WatchListInput .input{

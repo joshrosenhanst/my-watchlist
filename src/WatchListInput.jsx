@@ -120,13 +120,13 @@ class WatchListInput extends Component {
             value,
             onChange: this.onChange,
             className: 'input',
-            id: 'WatchList-autosuggest-input',
-            'aria-labelledby': 'app-subtitle'
+            id: 'WatchList-autosuggest-input'
         };
         //console.log(noResults);
         if(process.env.REACT_APP_OMDB_API_KEY){
             return (
                 <div className="WatchListInput">
+                    <label className="label" htmlFor="WatchList-autosuggest-input">Search to add Movies or TV Shows to your WatchList</label>
                     <div className={"control has-icons-left"+(isLoading?" is-loading":"")}>
                         <Autosuggest
                             suggestions={suggestions}

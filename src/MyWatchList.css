@@ -45,3 +45,17 @@ body{
   font-weight: 400;
   color: #cccccc;
 }
+
+.storageMessage{
+  max-width: 600px;
+  margin: 10px auto;
+  border: 1px dashed white;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.storageMessage strong{
+  color: #ffffff;
+}

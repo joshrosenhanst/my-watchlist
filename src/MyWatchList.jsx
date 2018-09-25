@@ -9,6 +9,7 @@ import './MyWatchList.css';
 class MyWatchList extends Component {
   constructor(props){
     super(props);
+    this.storageMessage = null;
     this.appStorage = this.initLocalStorage();
     this.state = {
       watchListArray: this.getWatchListStorage(),
@@ -27,22 +28,40 @@ class MyWatchList extends Component {
       return window.localStorage;
     }
     catch (e) {
+      this.storageMessage = true;
       return window.sessionStorage;
     }
   }
 
   getWatchListStorage() {
-    let storage = this.appStorage.getItem(process.env.REACT_APP_STORAGE_LIST);
-    return JSON.parse(storage) || [];
+    let storage = null;
+    try {
+      storage = this.appStorage.getItem(process.env.REACT_APP_STORAGE_LIST);
+      return JSON.parse(storage) || [];
+    }
+    catch (e){
+      return [];
+    }
   }
 
   getNextIDStorage() {
-    return parseInt(this.appStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
+    let nextID = null;
+    try{
+      nextID = this.appStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID);
+      return parseInt(nextID,10) || 0;
+    }
+    catch (e){
+      return [];
+    }
   }
 
   updateStorage(watchList,nextID){
-    this.appStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
-    this.appStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
+    try {
+      this.appStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
+      this.appStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
+    } catch (e) {
+      console.log("Unable to save");
+    }
   }
 
   checkDuplicateIMDBID(id){
@@ -107,6 +126,7 @@ class MyWatchList extends Component {
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />
+          {this.storageMessage && <div className="storageMessage"><strong>Unable to access LocalStorage: </strong>My WatchList is unable to save your watchlist to your browser. Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode.<br />Refresh the page when cookies/site data is enabled.</div>}
         </header>
         <main className="MyWatchList-main">
           <WatchListsContainer

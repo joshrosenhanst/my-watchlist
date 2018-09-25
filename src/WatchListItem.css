@@ -1,5 +1,5 @@
 .WatchList-ListItem:focus, .WatchList-ListItem.is-focused{
-  outline: 1px solid #3273dc;
+  outline: 2px solid #6a1aa3;
   outline-offset: -8px;
 }
 
@@ -52,7 +52,7 @@
 
 .WatchList-ListItem .card-footer-button:focus, 
 .WatchList-ListItem .card-footer-button.is-focused{
-  outline:1px solid #3273dc;
+  outline:1px solid #6a1aa3;
   outline-offset: -1px;
 }
 

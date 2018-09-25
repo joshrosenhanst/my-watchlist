@@ -90,7 +90,7 @@ class MyWatchList extends Component {
       <div className="MyWatchList">
         <header className="MyWatchList-header">
           <h1 className="MyWatchList-title">
-            <svg class="MyWatchList-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 237.9 270">
+            <svg className="MyWatchList-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 237.9 270">
               <path d="M0,0.6C11.2,3,21.1,5.3,31.1,7.4c3.2,0.7,3.7,2.8,4.1,5.5
                 c1.4,9.3,2.9,18.6,4.5,28.7c9.2,1.1,18.2,2.1,28.2,3.2c-1-11-1.9-21.1-2.9-32.1c22.4,2.9,44.1,3.4,66.6,3.2
                 c-1.7,47.4-1.7,94.1-1.5,141.8c30.9-0.4,61.4,0.7,92.8,2.2c1.3,36.7,8,72.4,15,108c-2.4,2-4.5,0.9-6.7,0.4

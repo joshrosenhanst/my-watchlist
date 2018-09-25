@@ -10,7 +10,7 @@ class WatchListItem extends Component {
                     <div className="card-image">
                         <figure className="image is-2by3">
                             { (this.props.watchListItem.Poster && this.props.watchListItem.Poster !== "N/A") ?
-                            ( <img src={this.props.watchListItem.Poster} alt={this.props.watchListItem.Title + " Poster"} /> ) : 
+                            ( <img src={this.props.watchListItem.Poster.replace(/^http:/, 'https:')} alt={this.props.watchListItem.Title + " Poster"} /> ) : 
                             ( <img src={default_poster} alt={this.props.watchListItem.Title+" Poster"} /> ) }
                             <div className="ListItem-overlay">
                                 <p className="ListItem-title">{this.props.watchListItem.Title}</p>

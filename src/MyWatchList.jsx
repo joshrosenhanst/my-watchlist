@@ -9,24 +9,40 @@ import './MyWatchList.css';
 class MyWatchList extends Component {
   constructor(props){
     super(props);
+    this.appStorage = this.initLocalStorage();
     this.state = {
       watchListArray: this.getWatchListStorage(),
       nextID: this.getNextIDStorage(),
     };
   }
 
+  /*
+    Try localStorage (which can fail in IE if Protected Mode is on) and return localStorage or fall back to sessionStorage if that fails.
+  */
+  initLocalStorage() {
+    let now = Date.now();
+    try {
+      window.localStorage.setItem('test-' + now, '1234');
+      window.localStorage.removeItem('test-' + now);
+      return window.localStorage;
+    }
+    catch (e) {
+      return window.sessionStorage;
+    }
+  }
+
   getWatchListStorage() {
-    let storage = localStorage.getItem(process.env.REACT_APP_STORAGE_LIST);
+    let storage = this.appStorage.getItem(process.env.REACT_APP_STORAGE_LIST);
     return JSON.parse(storage) || [];
   }
 
   getNextIDStorage() {
-    return parseInt(localStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
+    return parseInt(this.appStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
   }
 
   updateStorage(watchList,nextID){
-    localStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
-    localStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
+    this.appStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
+    this.appStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
   }
 
   checkDuplicateIMDBID(id){

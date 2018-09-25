@@ -4,6 +4,10 @@
     margin:20px auto 0 auto;
 }
 
+.WatchListInput .control.has-icons-left .icon, .WatchListInput .control.has-icons-right .icon{
+    color: rgba(74,74,74,0.4);
+}
+
 .WatchListInput .label{
     font-size: 1.25rem;
     font-weight: 400;
@@ -13,17 +17,17 @@
 .WatchListInput .input{
     font-size:1.3rem;
 }
-.WatchListInput .input::-moz-placeholder {
-    color:rgba(54,54,54,.6)
+
+.WatchListInput .input:focus, .WatchListInput .input.is-focused{
+    box-shadow: 0 0 0 .125em rgba(50,115,220,.75);
 }
-.WatchListInput .input::-webkit-input-placeholder {
-    color:rgba(54,54,54,.6)
+
+#WatchList-autosuggest-input::-moz-placeholder {
+    color:#4a4a4a;
 }
-.WatchListInput .input:-moz-placeholder {
-    color:rgba(54,54,54,.6)
-}
-.WatchListInput .input:-ms-input-placeholder {
-    color:rgba(54,54,54,.6)
+
+#WatchList-autosuggest-input::-webkit-input-placeholder{
+    color:#4a4a4a;
 }
 
 .react-autosuggest__suggestions-container {

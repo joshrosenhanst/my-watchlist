@@ -3,23 +3,23 @@
   "name": "My WatchList - Track the movies and TV shows you want to watch.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "https://joshrosenhanst.com/watchlist/favicon.ico",
+      "sizes": "32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "android-chrome-192x192.png",
+      "src": "https://joshrosenhanst.com/watchlist/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-        "src": "android-chrome-256x256.png",
-        "sizes": "256x256",
+        "src": "https://joshrosenhanst.com/watchlist/android-chrome-512x512.png",
+        "sizes": "512x512",
         "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "https://joshrosenhanst.com/watchlist/",
   "display": "standalone",
-  "theme_color": "#1f191a",
+  "theme_color": "#6a1aa3",
   "background_color": "#ffffff"
 }

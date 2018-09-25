@@ -126,7 +126,7 @@ class MyWatchList extends Component {
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />
-          {this.storageMessage && <div className="storageMessage"><strong>Unable to access LocalStorage: </strong>My WatchList is unable to save your watchlist to your browser. Your watchlist for this session will be lost when you visit the page again. Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode.<br />Refresh the page when cookies/site data is enabled.</div>}
+          {this.storageMessage && <div className="storageMessage"><strong>Unable to access LocalStorage: </strong>My WatchList is unable to save your watchlist to your browser. Your watchlist for this session will be lost when you leave the page. Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode.<br />Refresh the page when cookies/site data is enabled.</div>}
         </header>
         <main className="MyWatchList-main">
           <WatchListsContainer

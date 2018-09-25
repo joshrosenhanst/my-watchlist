@@ -5,7 +5,7 @@ import default_poster from './img/default_poster.png';
 class WatchListItem extends Component {
     render() {
         return (
-            <div className={"column WatchList-ListItem "+(this.props.completed?"completed-item is-2-desktop is-3-tablet is-4-mobile":"up-next-item is-2-desktop is-4-tablet is-6-mobile")}>
+            <div tabindex="0" className={"column WatchList-ListItem "+(this.props.completed?"completed-item is-2-desktop is-3-tablet is-4-mobile":"up-next-item is-2-desktop is-4-tablet is-6-mobile")} aria-label={this.props.watchListItem.Title+" "+this.props.watchListItem.Year+" "+this.props.watchListItem.Type}>
                 <div className="card">
                     <div className="card-image">
                         <figure className="image is-2by3">

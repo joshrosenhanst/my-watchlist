@@ -9,58 +9,39 @@ import './MyWatchList.css';
 class MyWatchList extends Component {
   constructor(props){
     super(props);
-    this.storageMessage = null;
-    this.appStorage = this.initLocalStorage();
+    this.storageError = false;
     this.state = {
       watchListArray: this.getWatchListStorage(),
       nextID: this.getNextIDStorage(),
     };
   }
-
-  /*
-    Try localStorage (which can fail in IE if Protected Mode is on) and return localStorage or fall back to sessionStorage if that fails.
-  */
-  initLocalStorage() {
-    let now = Date.now();
-    try {
-      window.localStorage.setItem('test-' + now, '1234');
-      window.localStorage.removeItem('test-' + now);
-      return window.localStorage;
-    }
-    catch (e) {
-      this.storageMessage = true;
-      return window.sessionStorage;
-    }
-  }
-
+  
   getWatchListStorage() {
-    let storage = null;
     try {
-      storage = this.appStorage.getItem(process.env.REACT_APP_STORAGE_LIST);
-      return JSON.parse(storage) || [];
+      return JSON.parse(localStorage.getItem(process.env.REACT_APP_STORAGE_LIST)) || [];
     }
     catch (e){
+      this.storageError = true;
       return [];
     }
   }
 
   getNextIDStorage() {
-    let nextID = null;
     try{
-      nextID = this.appStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID);
-      return parseInt(nextID,10) || 0;
+      return parseInt(localStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
     }
     catch (e){
+      this.storageError = true;
       return [];
     }
   }
 
   updateStorage(watchList,nextID){
     try {
-      this.appStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
-      this.appStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
+      localStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
+      localStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
     } catch (e) {
-      console.log("Unable to save");
+      this.storageError = true;
     }
   }
 
@@ -126,7 +107,7 @@ class MyWatchList extends Component {
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />
-          {this.storageMessage && <div className="storageMessage"><strong>Unable to access LocalStorage: </strong>My WatchList is unable to save your watchlist to your browser. Your watchlist for this session will be lost when you leave the page. Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode.<br />Refresh the page when cookies/site data is enabled.</div>}
+          {this.storageError && <div id="storageError"><strong>Unable to access LocalStorage: </strong>Your watchlist for this session will not be saved when you leave the page.<br />Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode. Refresh the page when cookies/site data are enabled..</div>}
         </header>
         <main className="MyWatchList-main">
           <WatchListsContainer

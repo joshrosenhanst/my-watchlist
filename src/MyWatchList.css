@@ -7,8 +7,7 @@ body{
 }
 
 .MyWatchList-header {
-  background-color: #1f191a;
-  background-image:linear-gradient(135deg,#1f191a 0,#262626 50%,#1f191a 100%);
+  background-color: #6a1aa3;
   padding: 40px 20px;
   color: white;
 }
@@ -32,8 +31,17 @@ body{
   font-size: 2.5em;
 }
 
+.MyWatchList-logo {
+  width: 1em;
+  height: 100%;
+  margin-right: 10px;
+  fill: #ffffff;
+  vertical-align: text-bottom;
+  padding: 4px;
+}
+
 .MyWatchList-subtitle{
   font-size: 1.25rem;
   font-weight: 400;
-  color:#8a8a8a;
+  color: #cccccc;
 }

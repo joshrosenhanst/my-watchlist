@@ -7,9 +7,10 @@ body{
 }
 
 .MyWatchList-header {
-  background-color: #6a1aa3;
+  background-color: #1f191a;
   padding: 40px 20px;
   color: white;
+  border-bottom: 3px solid #6a1aa3;
 }
 
 .MyWatchList-footer {

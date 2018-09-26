@@ -19,7 +19,7 @@
 }
 
 .WatchListInput .input:focus, .WatchListInput .input.is-focused{
-    box-shadow: 0 0 0 .125em rgba(50,115,220,.75);
+    box-shadow: 0 0 0 .125em #6a1aa3;
 }
 
 #WatchList-autosuggest-input::-moz-placeholder {

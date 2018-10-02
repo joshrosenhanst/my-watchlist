@@ -10,37 +10,65 @@ class MyWatchList extends Component {
   constructor(props){
     super(props);
     this.storageError = false;
+    this.canAccessLocalStorage = false;
+    this.canAccessLocalStorage = this.checkLocalStorage();
     this.state = {
       watchListArray: this.getWatchListStorage(),
       nextID: this.getNextIDStorage(),
     };
   }
+
+  checkLocalStorage() {
+    try {
+      localStorage.setItem("watchlist_test", "test");
+      localStorage.removeItem("watchlist_test");
+      return true;
+    }
+    catch (e) {
+      this.storageError = true;
+      return false;
+    }
+  }
   
   getWatchListStorage() {
-    try {
-      return JSON.parse(localStorage.getItem(process.env.REACT_APP_STORAGE_LIST)) || [];
-    }
-    catch (e){
+    if(this.canAccessLocalStorage){
+      try {
+        return JSON.parse(localStorage.getItem(process.env.REACT_APP_STORAGE_LIST)) || [];
+      }
+      catch (e){
+        this.storageError = true;
+        return [];
+      }
+    }else{
       this.storageError = true;
       return [];
     }
   }
 
   getNextIDStorage() {
-    try{
-      return parseInt(localStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
-    }
-    catch (e){
+    if(this.canAccessLocalStorage){
+      try{
+        return parseInt(localStorage.getItem(process.env.REACT_APP_STORAGE_NEXTID),10) || 0;
+      }
+      catch (e){
+        this.storageError = true;
+        return 0;
+      }
+    }else{
       this.storageError = true;
       return 0;
     }
   }
 
   updateStorage(watchList,nextID){
-    try {
-      localStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
-      localStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
-    } catch (e) {
+    if(this.canAccessLocalStorage){
+      try {
+        localStorage.setItem(process.env.REACT_APP_STORAGE_LIST, JSON.stringify(watchList));
+        localStorage.setItem(process.env.REACT_APP_STORAGE_NEXTID, nextID);
+      } catch (e) {
+        this.storageError = true;
+      }
+    }else{
       this.storageError = true;
     }
   }

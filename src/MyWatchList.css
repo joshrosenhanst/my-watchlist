@@ -2,6 +2,14 @@ body{
   line-height:1.2;
 }
 
+noscript {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
 .MyWatchList {
   text-align: center;
 }

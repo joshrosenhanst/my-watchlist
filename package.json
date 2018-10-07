@@ -2,7 +2,7 @@
   "name": "my-watchlist",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://joshrosenhanst.com/watchlist",
+  "homepage": "https://joshrosenhanst.com/watchlist/",
   "dependencies": {
     "immutability-helper": "^2.7.0",
     "lodash": "^4.17.10",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && react-snapshot",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -26,6 +26,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "react-snap": "^1.19.0"
+    "react-snapshot": "^1.3.0"
   }
 }

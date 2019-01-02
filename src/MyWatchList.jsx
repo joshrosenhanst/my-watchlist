@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 //import HTML5Backend from 'react-dnd-html5-backend';
 import WatchListInput from './WatchListInput';
 import WatchListsContainer from './WatchListsContainer';
-import './MyWatchList.css';
+//import './MyWatchList.css';
 
 class MyWatchList extends Component {
   constructor(props){
@@ -135,7 +135,9 @@ class MyWatchList extends Component {
           <WatchListInput 
             addWatchListItem={(watchListItem) => this.addWatchListItem(watchListItem)} 
           />
-          {this.storageError && <div id="storageError"><strong>Unable to access LocalStorage: </strong>Your watchlist for this session will not be saved when you leave the page.<br />Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode. Refresh the page when cookies/site data are enabled..</div>}
+          { this.storageError && (
+            <div id="storageError"><strong>Unable to access LocalStorage: </strong>Your watchlist for this session will not be saved when you leave the page.<br />Please enable cookies and/or site data for this website in your browser settings. For Internet Explorer, you may need to disable Protected Mode. Refresh the page when cookies/site data are enabled.</div>
+          ) }
         </header>
         <main className="MyWatchList-main">
           <WatchListsContainer
@@ -145,7 +147,7 @@ class MyWatchList extends Component {
           />
         </main>
         <footer className="MyWatchList-footer">
-            <p>Your WatchList is stored locally in your browser using HTML5 LocalStorage. Movie information and posters provided by <a href="https://www.omdbapi.com/">OMDB</a>.</p>
+          <p>Your WatchList is stored locally in your browser using HTML5 LocalStorage. Movie information and posters provided by <a href="https://www.omdbapi.com/">OMDB</a>.</p>
         </footer>
       </div>
     );

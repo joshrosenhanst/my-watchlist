@@ -1,0 +1,71 @@
+body{
+    line-height:1.2;
+  }
+  
+  noscript {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  
+  .MyWatchList {
+    text-align: center;
+  }
+  
+  .MyWatchList-header {
+    background-color: #1f191a;
+    padding: 40px 20px;
+    color: white;
+    border-bottom: 3px solid #6a1aa3;
+  }
+  
+  .MyWatchList-footer {
+    border-top:1px solid #eaecef;
+    font-size:12px;
+    margin-top:40px;
+    font-style:italic;
+    padding:20px 20px;
+    text-align:center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .MyWatchList-main {
+    padding:20px;
+  }
+  
+  .MyWatchList-title {
+    font-size: 2.5em;
+  }
+  
+  .MyWatchList-logo {
+    width: 1em;
+    height: 48px;
+    margin-right: 10px;
+    fill: #ffffff;
+    vertical-align: text-bottom;
+    padding: 4px;
+  }
+  
+  .MyWatchList-subtitle{
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #cccccc;
+  }
+  
+  #storageError{
+    max-width: 600px;
+    margin: 10px auto;
+    border: 1px dashed white;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: left;
+    line-height: 1.5;
+  }
+  
+  #storageError strong{
+    color: #ffffff;
+  }
+  
